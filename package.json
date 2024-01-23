@@ -1,10 +1,12 @@
 {
-  "name": "chat",
+  "name": "wegowhere-backend-test",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Backend Test for WeGoWhere.",
+  "author": {
+    "name": "Adam Rafiandri"
+  },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "ISC",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
@@ -20,9 +22,20 @@
     "test:e2e": "jest --config ./apps/chat/test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/cache-manager": "^2.2.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/microservices": "^10.3.0",
+    "@nestjs/mongoose": "^10.0.2",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-socket.io": "^10.3.0",
+    "@nestjs/websockets": "^10.3.0",
+    "amqp-connection-manager": "^4.1.14",
+    "amqplib": "^0.10.3",
+    "cache-manager": "^5.4.0",
+    "cache-manager-ioredis-yet": "^1.2.2",
+    "dayjs": "^1.11.10",
+    "mongoose": "^8.1.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
