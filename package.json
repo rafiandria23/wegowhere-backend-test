@@ -28,6 +28,7 @@
     "@nestjs/microservices": "^10.3.0",
     "@nestjs/mongoose": "^10.0.2",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-fastify": "^10.3.0",
     "@nestjs/platform-socket.io": "^10.3.0",
     "@nestjs/websockets": "^10.3.0",
     "amqp-connection-manager": "^4.1.14",
@@ -79,7 +80,11 @@
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
     "roots": [
-      "<rootDir>/apps/"
-    ]
+      "<rootDir>/apps/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+    }
   }
 }

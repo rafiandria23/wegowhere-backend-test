@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
 import { CommonService } from '@app/common';
-import { UserService } from './user.service';
+import { ChatService } from './chat.service';
 
 @Controller()
-export class UserController {
+export class ChatController {
   constructor(
     private readonly commonService: CommonService,
-    private readonly userService: UserService,
+    private readonly chatService: ChatService,
   ) {}
 
   @Get('/')

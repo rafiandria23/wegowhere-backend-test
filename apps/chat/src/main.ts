@@ -1,8 +1,16 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import {
+  NestFastifyApplication,
+  FastifyAdapter,
+} from '@nestjs/platform-fastify';
+import { ChatModule } from './chat.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    ChatModule,
+    new FastifyAdapter(),
+  );
+
   await app.listen(3000);
 }
 bootstrap();
