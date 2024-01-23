@@ -13,3 +13,9 @@ export class UserCreateDto {
   @IsNotEmpty()
   readonly username: string;
 }
+
+export class UserFindByUsernameDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly username: string;
+}

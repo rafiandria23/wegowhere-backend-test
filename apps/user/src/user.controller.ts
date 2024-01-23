@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { UserCreateDto, UserEvent } from '@app/common';
+import { UserCreateDto, UserEvent, UserFindByUsernameDto } from '@app/common';
 import { UserService } from './user.service';
 
 @Controller()
@@ -10,5 +10,10 @@ export class UserController {
   @MessagePattern(UserEvent.CREATE)
   async create(@Payload() payload: UserCreateDto) {
     return await this.userService.create(payload);
+  }
+
+  @MessagePattern(UserEvent.FIND_BY_USERNAME)
+  async findByUsername(@Payload() payload: UserFindByUsernameDto) {
+    return await this.userService.findByUsername(payload.username);
   }
 }

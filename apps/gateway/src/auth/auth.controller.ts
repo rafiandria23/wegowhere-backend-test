@@ -1,4 +1,11 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Inject,
+  Post,
+} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { AuthEvent, AuthSignInDto, AuthSignUpDto } from '@app/common';
 import { firstValueFrom } from 'rxjs';
@@ -10,6 +17,7 @@ export class AuthController {
   ) {}
 
   @Post('/sign-up')
+  @HttpCode(HttpStatus.CREATED)
   async signUp(@Body() payload: AuthSignUpDto) {
     return firstValueFrom(
       this.authServiceClient.send(AuthEvent.SIGN_UP, payload),
@@ -17,6 +25,7 @@ export class AuthController {
   }
 
   @Post('/sign-in')
+  @HttpCode(HttpStatus.OK)
   async signIn(@Body() payload: AuthSignInDto) {
     return firstValueFrom(
       this.authServiceClient.send(AuthEvent.SIGN_IN, payload),
