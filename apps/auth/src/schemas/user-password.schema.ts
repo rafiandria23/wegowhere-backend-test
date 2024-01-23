@@ -16,25 +16,13 @@ export class UserPassword {
     required: true,
     unique: true,
   })
-  user_id: string;
+  user_id: MongooseSchema.Types.ObjectId;
 
   @Prop({
     type: MongooseSchema.Types.String,
     required: true,
   })
   password: string;
-
-  @Prop({
-    type: MongooseSchema.Types.Date,
-    required: true,
-  })
-  created_at: Date;
-
-  @Prop({
-    type: MongooseSchema.Types.Date,
-    required: true,
-  })
-  updated_at: Date;
 }
 
 export const UserPasswordSchema = SchemaFactory.createForClass(UserPassword);
