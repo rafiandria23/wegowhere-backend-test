@@ -1,34 +1,18 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { GatewayController } from './gateway.controller';
+import { GatewayService } from './gateway.service';
 import { CommonModule } from '@app/common';
-import { DbModule } from '@app/db';
-import { RedisModule } from '@app/redis';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
-import {
-  UserPassword,
-  UserPasswordSchema,
-} from './schemas/user-password.schema';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
-  imports: [
-    CommonModule,
-    DbModule,
-    RedisModule,
-    MongooseModule.forFeature([
-      {
-        name: UserPassword.name,
-        schema: UserPasswordSchema,
-      },
-    ]),
-  ],
-  controllers: [AuthController],
+  imports: [CommonModule],
+  controllers: [GatewayController, AuthController],
   providers: [
-    AuthService,
+    GatewayService,
     {
-      provide: 'USER_SERVICE',
+      provide: 'AUTH_SERVICE',
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         return ClientProxyFactory.create({
@@ -42,7 +26,7 @@ import {
                 password: configService.get<string>('rmq.pass'),
               },
             ],
-            queue: 'user',
+            queue: 'auth',
             queueOptions: {
               durable: false,
             },
@@ -52,4 +36,4 @@ import {
     },
   ],
 })
-export class AuthModule {}
+export class GatewayModule {}

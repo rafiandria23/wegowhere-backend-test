@@ -1,21 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Inject } from '@nestjs/common';
+import { ClientProxy, MessagePattern, Payload } from '@nestjs/microservices';
+import { AuthEvent, AuthSignUpDto, UserEvent } from '@app/common';
+import { firstValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
-import { CommonService } from '@app/common';
 
 @Controller()
 export class AuthController {
   constructor(
-    private readonly commonService: CommonService,
     private readonly authService: AuthService,
+    @Inject('USER_SERVICE') private readonly userServiceClient: ClientProxy,
   ) {}
 
-  @Get('/')
-  home() {
-    return this.commonService.successTimestamp();
-  }
-
-  @Get('/health')
-  health() {
-    return this.commonService.successTimestamp();
+  @MessagePattern(AuthEvent.SIGN_UP)
+  async signUp(@Payload() payload: AuthSignUpDto) {
+    return await firstValueFrom(
+      this.userServiceClient.send(UserEvent.CREATE, payload),
+    );
   }
 }

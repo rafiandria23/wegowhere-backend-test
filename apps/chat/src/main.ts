@@ -1,22 +1,32 @@
 import { NestFactory } from '@nestjs/core';
-import {
-  NestFastifyApplication,
-  FastifyAdapter,
-} from '@nestjs/platform-fastify';
-import { ChatModule } from './chat.module';
 import { ConfigService } from '@nestjs/config';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { ChatModule } from './chat.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
+  const configService = new ConfigService();
+
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     ChatModule,
-    new FastifyAdapter(),
+    {
+      transport: Transport.RMQ,
+      options: {
+        urls: [
+          {
+            hostname: configService.get<string>('rmq.host'),
+            port: configService.get<number>('rmq.port'),
+            username: configService.get<string>('rmq.user'),
+            password: configService.get<string>('rmq.pass'),
+          },
+        ],
+        queue: 'chat',
+        queueOptions: {
+          durable: false,
+        },
+      },
+    },
   );
 
-  const configService = app.get(ConfigService);
-
-  await app.listen(
-    configService.get<number>('api.port'),
-    configService.get<string>('api.host'),
-  );
+  await app.listen();
 }
 bootstrap();
