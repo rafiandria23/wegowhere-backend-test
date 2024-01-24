@@ -11,14 +11,14 @@ export class JwtService {
 
   async sign<T = unknown>(
     payload: T,
-    options?: Omit<JwtSignOptions, keyof JwtSignOptions>,
+    options?: Partial<JwtSignOptions>,
   ): Promise<string> {
     return await this.nestJwtService.signAsync(payload as any, options);
   }
 
   async verify<T = unknown>(
     payload: string,
-    options?: JwtVerifyOptions,
+    options?: Partial<JwtVerifyOptions>,
   ): Promise<T> {
     return (await this.nestJwtService.verifyAsync(payload, options)) as T;
   }

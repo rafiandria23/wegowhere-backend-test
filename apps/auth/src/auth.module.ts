@@ -5,6 +5,7 @@ import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { CommonModule } from '@app/common';
 import { DbModule } from '@app/db';
 import { RedisModule } from '@app/redis';
+import { JwtModule } from '@app/jwt';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import {
@@ -23,6 +24,7 @@ import {
         schema: UserPasswordSchema,
       },
     ]),
+    JwtModule,
   ],
   controllers: [AuthController],
   providers: [
