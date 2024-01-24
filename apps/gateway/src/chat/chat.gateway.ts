@@ -1,4 +1,4 @@
-import { Inject } from '@nestjs/common';
+import { Inject, UseGuards } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import {
   MessageBody,
@@ -8,8 +8,10 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { ChatEvent, ChatSaveMessageDto, ChatSocketEvent } from '@app/common';
+import { AuthWsGuard } from '@app/common/guards/ws.guard';
 
 @WebSocketGateway()
+@UseGuards(AuthWsGuard)
 export class ChatGateway {
   @WebSocketServer()
   server: Server;

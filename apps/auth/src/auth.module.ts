@@ -32,7 +32,7 @@ import {
     {
       provide: 'USER_SERVICE',
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory(configService: ConfigService) {
         return ClientProxyFactory.create({
           transport: Transport.RMQ,
           options: {

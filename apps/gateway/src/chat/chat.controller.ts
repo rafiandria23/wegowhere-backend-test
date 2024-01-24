@@ -1,4 +1,5 @@
 import {
+  AuthHttpGuard,
   ChatCreateRoomDto,
   ChatEvent,
   ChatJoinRoomDto,
@@ -13,11 +14,13 @@ import {
   Inject,
   Param,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 
 @Controller('/api/v1/chat')
+@UseGuards(AuthHttpGuard)
 export class ChatController {
   constructor(
     private readonly commonService: CommonService,

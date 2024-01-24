@@ -20,7 +20,7 @@ import { UserController } from './user/user.controller';
     {
       provide: 'AUTH_SERVICE',
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory(configService: ConfigService) {
         return ClientProxyFactory.create({
           transport: Transport.RMQ,
           options: {
@@ -43,7 +43,7 @@ import { UserController } from './user/user.controller';
     {
       provide: 'CHAT_SERVICE',
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory(configService: ConfigService) {
         return ClientProxyFactory.create({
           transport: Transport.RMQ,
           options: {
@@ -66,7 +66,7 @@ import { UserController } from './user/user.controller';
     {
       provide: 'USER_SERVICE',
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
+      useFactory(configService: ConfigService) {
         return ClientProxyFactory.create({
           transport: Transport.RMQ,
           options: {

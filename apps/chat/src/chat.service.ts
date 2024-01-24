@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { Model, Schema as MongooseSchema } from 'mongoose';
 import {
   ChatCreateRoomDto,
@@ -18,6 +19,7 @@ export class ChatService {
     private readonly chatMemberModel: Model<ChatMember>,
     @InjectModel(ChatMessage.name)
     private readonly chatMessageModel: Model<ChatMessage>,
+    @Inject('USER_SERVICE') private readonly userServiceClient: ClientProxy,
   ) {}
 
   async createRoom(user_id: string, payload: ChatCreateRoomDto) {
@@ -39,8 +41,9 @@ export class ChatService {
     const foundRoom = await this.findRoomById(payload.room_id);
 
     if (!foundRoom) {
-      // Refactor this to use RPC exception.
-      throw new Error('Chat room is not found! Please create one first.');
+      throw new RpcException(
+        'Chat room is not found! Please create one first.',
+      );
     }
 
     await this.chatMemberModel.create({
@@ -53,7 +56,9 @@ export class ChatService {
     const foundRoom = await this.findRoomById(payload.room_id);
 
     if (!foundRoom) {
-      throw new Error('Chat room is not found! Please create one first!');
+      throw new RpcException(
+        'Chat room is not found! Please create one first!',
+      );
     }
 
     await this.chatMessageModel.create({

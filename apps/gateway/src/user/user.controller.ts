@@ -5,12 +5,14 @@ import {
   HttpStatus,
   Inject,
   Param,
+  UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
-import { CommonService, UserEvent } from '@app/common';
+import { AuthHttpGuard, CommonService, UserEvent } from '@app/common';
 
 @Controller('/api/v1/user')
+@UseGuards(AuthHttpGuard)
 export class UserController {
   constructor(
     private readonly commonService: CommonService,
