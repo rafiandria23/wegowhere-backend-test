@@ -1,14 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import {
   ChatSaveMessageDto,
   ChatEvent,
   ChatCreateRoomDto,
   ChatJoinRoomDto,
+  AuthRpcGuard,
 } from '@app/common';
 import { ChatService } from './chat.service';
 
 @Controller()
+@UseGuards(AuthRpcGuard)
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 

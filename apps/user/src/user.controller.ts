@@ -1,6 +1,7 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseGuards } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import {
+  AuthRpcGuard,
   UserCreateDto,
   UserEvent,
   UserFindByIdDto,
@@ -10,6 +11,7 @@ import { RedisService } from '@app/redis';
 import { UserService } from './user.service';
 
 @Controller()
+@UseGuards(AuthRpcGuard)
 export class UserController {
   constructor(
     private readonly redisService: RedisService,
