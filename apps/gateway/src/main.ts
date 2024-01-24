@@ -28,8 +28,8 @@ async function bootstrap() {
   SwaggerModule.setup('/docs', app, document);
 
   await app.listen(
-    configService.get<number>('api.port'),
-    configService.get<string>('api.host'),
+    configService.get<number>('gateway.port'),
+    configService.get<string>('gateway.host'),
   );
 }
 bootstrap();

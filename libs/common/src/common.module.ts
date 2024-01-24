@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { CommonService } from './common.service';
-import apiConfig from './configs/api.config';
+import gatewayConfig from './configs/gateway.config';
 import dbConfig from './configs/db.config';
 import redisConfig from './configs/redis.config';
 import rmqConfig from './configs/rmq.config';
@@ -10,7 +10,7 @@ import rmqConfig from './configs/rmq.config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [apiConfig, dbConfig, redisConfig, rmqConfig],
+      load: [gatewayConfig, dbConfig, redisConfig, rmqConfig],
     }),
   ],
   providers: [CommonService],
