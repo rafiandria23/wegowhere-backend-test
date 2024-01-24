@@ -1,9 +1,12 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { RpcException } from '@nestjs/microservices';
 import { Model } from 'mongoose';
 import {
   ChatCreateRoomDto,
+  ChatFindAllMembersByRoomIdDto,
+  ChatFindAllMessagesByRoomIdDto,
+  ChatFindRoomByIdDto,
   ChatJoinRoomDto,
   ChatSaveMessageDto,
 } from '@app/common';
@@ -19,10 +22,15 @@ export class ChatService {
     private readonly chatMemberModel: Model<ChatMember>,
     @InjectModel(ChatMessage.name)
     private readonly chatMessageModel: Model<ChatMessage>,
-    @Inject('USER_SERVICE') private readonly userServiceClient: ClientProxy,
   ) {}
 
-  async createRoom(user_id: string, payload: ChatCreateRoomDto) {
+  async createRoom({
+    user_id,
+    payload,
+  }: {
+    user_id: string;
+    payload: ChatCreateRoomDto;
+  }) {
     const createdRoom = (
       await this.chatRoomModel.create({
         name: payload.name,
@@ -37,8 +45,16 @@ export class ChatService {
     return createdRoom;
   }
 
-  async joinRoom(user_id: string, payload: ChatJoinRoomDto) {
-    const foundRoom = await this.findRoomById(payload.room_id);
+  async joinRoom({
+    user_id,
+    payload,
+  }: {
+    user_id: string;
+    payload: ChatJoinRoomDto;
+  }) {
+    const foundRoom = await this.findRoomById({
+      room_id: payload.room_id,
+    });
 
     if (!foundRoom) {
       throw new RpcException(
@@ -52,8 +68,16 @@ export class ChatService {
     });
   }
 
-  async saveMessage(user_id: string, payload: ChatSaveMessageDto) {
-    const foundRoom = await this.findRoomById(payload.room_id);
+  async saveMessage({
+    user_id,
+    payload,
+  }: {
+    user_id: string;
+    payload: ChatSaveMessageDto;
+  }) {
+    const foundRoom = await this.findRoomById({
+      room_id: payload.room_id,
+    });
 
     if (!foundRoom) {
       throw new RpcException(
@@ -74,8 +98,8 @@ export class ChatService {
     return foundRooms.map((room) => room.toObject());
   }
 
-  async findRoomById(room_id: string) {
-    const foundRoom = await this.chatRoomModel.findById(room_id);
+  async findRoomById(payload: ChatFindRoomByIdDto) {
+    const foundRoom = await this.chatRoomModel.findById(payload.room_id);
 
     if (!foundRoom) {
       return null;
@@ -84,17 +108,17 @@ export class ChatService {
     return foundRoom.toObject();
   }
 
-  async findAllMembersByRoomId(room_id: string) {
+  async findAllMembersByRoomId(payload: ChatFindAllMembersByRoomIdDto) {
     const foundMembers = await this.chatMemberModel.find({
-      room_id,
+      room_id: payload.room_id,
     });
 
     return foundMembers.map((member) => member.toObject());
   }
 
-  async findAllMessagesByRoomId(room_id: string) {
+  async findAllMessagesByRoomId(payload: ChatFindAllMessagesByRoomIdDto) {
     const foundMessages = await this.chatMessageModel.find({
-      room_id,
+      room_id: payload.room_id,
     });
 
     return foundMessages.map((message) => message.toObject());

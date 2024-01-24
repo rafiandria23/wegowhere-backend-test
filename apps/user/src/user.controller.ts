@@ -48,7 +48,7 @@ export class UserController {
       key: `user.${payload.user_id}`,
       handler: {
         args: payload,
-        fn: this.userService.findById.bind(this),
+        fn: this.userService.findById,
       },
     });
 
@@ -73,7 +73,7 @@ export class UserController {
     const result = await this.redisService.cacheResult({
       key: `user.${ctx.getMessage().auth.user_id}`,
       handler: {
-        fn: this.userService.me.bind(this),
+        fn: this.userService.me,
       },
     });
 

@@ -41,7 +41,10 @@ export class ChatGateway {
 
     return {
       event: ChatSocketEvent.RECEIVE_MESSAGE,
-      data: payload,
+      data: {
+        user_id: _.get(client, 'handshake.auth.user_id'),
+        ...payload,
+      },
     };
   }
 }

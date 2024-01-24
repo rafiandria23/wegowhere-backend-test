@@ -30,7 +30,7 @@ export class UserService {
     return foundUsers.map((user) => user.toObject());
   }
 
-  async findById(payload: UserFindByIdDto) {
+  findById = async (payload: UserFindByIdDto) => {
     const foundUser = await this.userModel.findById(payload.user_id);
 
     if (!foundUser) {
@@ -38,7 +38,7 @@ export class UserService {
     }
 
     return foundUser.toObject();
-  }
+  };
 
   async findByUsername(payload: UserFindByUsernameDto) {
     const foundUser = await this.userModel.findOne({
@@ -52,7 +52,7 @@ export class UserService {
     return foundUser.toObject();
   }
 
-  async me() {
+  me = async () => {
     return {};
-  }
+  };
 }
