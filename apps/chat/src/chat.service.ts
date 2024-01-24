@@ -20,7 +20,7 @@ export class ChatService {
     private readonly chatMessageModel: Model<ChatMessage>,
   ) {}
 
-  async createRoom(userId: string, payload: ChatCreateRoomDto) {
+  async createRoom(user_id: string, payload: ChatCreateRoomDto) {
     const createdRoom = (
       await this.chatRoomModel.create({
         name: payload.name,
@@ -29,13 +29,13 @@ export class ChatService {
 
     await this.chatMemberModel.create({
       room_id: createdRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(userId),
+      user_id: new MongooseSchema.Types.ObjectId(user_id),
     });
 
     return createdRoom;
   }
 
-  async joinRoom(userId: string, payload: ChatJoinRoomDto) {
+  async joinRoom(user_id: string, payload: ChatJoinRoomDto) {
     const foundRoom = await this.findRoomById(payload.room_id);
 
     if (!foundRoom) {
@@ -45,11 +45,11 @@ export class ChatService {
 
     await this.chatMemberModel.create({
       room_id: foundRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(userId),
+      user_id: new MongooseSchema.Types.ObjectId(user_id),
     });
   }
 
-  async saveMessage(userId: string, payload: ChatSaveMessageDto) {
+  async saveMessage(user_id: string, payload: ChatSaveMessageDto) {
     const foundRoom = await this.findRoomById(payload.room_id);
 
     if (!foundRoom) {
@@ -58,14 +58,20 @@ export class ChatService {
 
     await this.chatMessageModel.create({
       room_id: foundRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(userId),
+      user_id: new MongooseSchema.Types.ObjectId(user_id),
       content: payload.content,
     });
   }
 
-  async findRoomById(id: string) {
+  async findAllRooms() {
+    const foundRooms = await this.chatRoomModel.find({});
+
+    return foundRooms.map((room) => room.toObject());
+  }
+
+  async findRoomById(room_id: string) {
     const foundRoom = await this.chatRoomModel.findById(
-      new MongooseSchema.Types.ObjectId(id),
+      new MongooseSchema.Types.ObjectId(room_id),
     );
 
     if (!foundRoom) {
@@ -73,5 +79,21 @@ export class ChatService {
     }
 
     return foundRoom.toObject();
+  }
+
+  async findAllMembersByRoomId(room_id: string) {
+    const foundMembers = await this.chatMemberModel.find({
+      room_id: new MongooseSchema.Types.ObjectId(room_id),
+    });
+
+    return foundMembers.map((member) => member.toObject());
+  }
+
+  async findAllMessagesByRoomId(room_id: string) {
+    const foundMessages = await this.chatMessageModel.find({
+      room_id: new MongooseSchema.Types.ObjectId(room_id),
+    });
+
+    return foundMessages.map((message) => message.toObject());
   }
 }

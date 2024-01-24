@@ -1,13 +1,9 @@
 import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 import { CommonService } from '@app/common';
-import { GatewayService } from './gateway.service';
 
 @Controller()
 export class GatewayController {
-  constructor(
-    private readonly commonService: CommonService,
-    private readonly gatewayService: GatewayService,
-  ) {}
+  constructor(private readonly commonService: CommonService) {}
 
   @Get('/')
   @HttpCode(HttpStatus.OK)

@@ -12,8 +12,18 @@ export class UserController {
     return await this.userService.create(payload);
   }
 
+  @MessagePattern(UserEvent.FIND_ALL)
+  async findAll() {
+    return await this.userService.findAll();
+  }
+
   @MessagePattern(UserEvent.FIND_BY_USERNAME)
   async findByUsername(@Payload() payload: UserFindByUsernameDto) {
     return await this.userService.findByUsername(payload.username);
+  }
+
+  @MessagePattern(UserEvent.ME)
+  async me() {
+    return await this.userService.me();
   }
 }

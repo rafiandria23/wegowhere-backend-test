@@ -20,6 +20,12 @@ export class UserService {
     return createdUser.toObject();
   }
 
+  async findAll() {
+    const foundUsers = await this.userModel.find({});
+
+    return foundUsers.map((user) => user.toObject());
+  }
+
   async findByUsername(username: string) {
     const foundUser = await this.userModel.findOne({ username });
 
@@ -28,5 +34,9 @@ export class UserService {
     }
 
     return foundUser.toObject();
+  }
+
+  async me() {
+    return {};
   }
 }
