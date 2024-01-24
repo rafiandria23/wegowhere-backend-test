@@ -5,19 +5,13 @@ import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { Model } from 'mongoose';
 import { firstValueFrom } from 'rxjs';
 import bcrypt from 'bcrypt';
-import {
-  AuthSignUpDto,
-  UserEvent,
-  AuthSignInDto,
-  CommonService,
-} from '@app/common';
+import { AuthSignUpDto, UserEvent, AuthSignInDto } from '@app/common';
 import { JwtService } from '@app/jwt';
 import { UserPassword } from './schemas/user-password.schema';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly commonService: CommonService,
     private readonly jwtService: JwtService,
     @InjectModel(UserPassword.name)
     private readonly userPasswordModel: Model<UserPassword>,
@@ -58,12 +52,10 @@ export class AuthService {
       this.jwtService.sign(tokenPayload, { expiresIn: '30d' }),
     ]);
 
-    return this.commonService.successTimestamp({
-      data: {
-        access: accessToken,
-        refresh: refreshToken,
-      },
-    });
+    return {
+      access: accessToken,
+      refresh: refreshToken,
+    };
   }
 
   async signIn(payload: AuthSignInDto) {
@@ -100,11 +92,9 @@ export class AuthService {
       this.jwtService.sign(tokenPayload, { expiresIn: '30d' }),
     ]);
 
-    return this.commonService.successTimestamp({
-      data: {
-        access: accessToken,
-        refresh: refreshToken,
-      },
-    });
+    return {
+      access: accessToken,
+      refresh: refreshToken,
+    };
   }
 }

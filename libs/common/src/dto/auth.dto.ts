@@ -16,7 +16,9 @@ export class AuthSignUpDto {
 
   @ApiProperty({
     required: true,
+    minLength: 6,
   })
+  @MinLength(6)
   @IsString()
   @IsNotEmpty()
   readonly username: string;
