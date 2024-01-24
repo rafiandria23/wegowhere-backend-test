@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Headers,
   HttpCode,
   HttpStatus,
   Inject,
@@ -9,10 +10,15 @@ import {
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
-import { AuthHttpGuard, CommonService, UserEvent } from '@app/common';
+import {
+  AuthGuard,
+  CommonService,
+  UserEvent,
+  UserFindByUsernameDto,
+} from '@app/common';
 
 @Controller('/api/v1/user')
-@UseGuards(AuthHttpGuard)
+@UseGuards(AuthGuard)
 export class UserController {
   constructor(
     private readonly commonService: CommonService,
@@ -21,9 +27,13 @@ export class UserController {
 
   @Get('/')
   @HttpCode(HttpStatus.OK)
-  async findAll() {
+  async findAll(@Headers('authorization') authorization: string) {
+    const record = this.commonService.buildRmqRecord({
+      authorization,
+      payload: {},
+    });
     const result = await firstValueFrom(
-      this.userServiceClient.send(UserEvent.FIND_ALL, {}),
+      this.userServiceClient.send(UserEvent.FIND_ALL, record),
     );
 
     return this.commonService.successTimestamp({
@@ -33,9 +43,16 @@ export class UserController {
 
   @Get('/:username')
   @HttpCode(HttpStatus.OK)
-  async findByUsername(@Param('username') username: string) {
+  async findByUsername(
+    @Headers('authorization') authorization: string,
+    @Param() payload: UserFindByUsernameDto,
+  ) {
+    const record = this.commonService.buildRmqRecord({
+      authorization,
+      payload,
+    });
     const result = await firstValueFrom(
-      this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, { username }),
+      this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, record),
     );
 
     return this.commonService.successTimestamp({
@@ -45,9 +62,13 @@ export class UserController {
 
   @Get('/me')
   @HttpCode(HttpStatus.OK)
-  async me() {
+  async me(@Headers('authorization') authorization: string) {
+    const record = this.commonService.buildRmqRecord({
+      authorization,
+      payload: {},
+    });
     const result = await firstValueFrom(
-      this.userServiceClient.send(UserEvent.ME, {}),
+      this.userServiceClient.send(UserEvent.ME, record),
     );
 
     return this.commonService.successTimestamp({

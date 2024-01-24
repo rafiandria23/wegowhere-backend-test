@@ -2,7 +2,7 @@ import { Controller, UseGuards } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import {
   AuthEvent,
-  AuthRpcGuard,
+  AuthGuard,
   AuthSignInDto,
   AuthSignUpDto,
   Public,
@@ -10,7 +10,7 @@ import {
 import { AuthService } from './auth.service';
 
 @Controller()
-@UseGuards(AuthRpcGuard)
+@UseGuards(AuthGuard)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

@@ -3,13 +3,14 @@ import { ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { GatewayController } from './gateway.controller';
 import { CommonModule } from '@app/common';
+import { JwtModule } from '@app/jwt';
 import { AuthController } from './auth/auth.controller';
 import { ChatGateway } from './chat/chat.gateway';
 import { ChatController } from './chat/chat.controller';
 import { UserController } from './user/user.controller';
 
 @Module({
-  imports: [CommonModule],
+  imports: [CommonModule, JwtModule],
   controllers: [
     GatewayController,
     AuthController,

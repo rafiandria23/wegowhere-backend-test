@@ -29,5 +29,4 @@
       "@app/jwt/*": ["libs/jwt/src/*"],
     },
   },
-  "exclude": ["node_modules", "dist"],
 }

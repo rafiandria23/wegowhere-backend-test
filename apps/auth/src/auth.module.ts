@@ -18,13 +18,13 @@ import {
     CommonModule,
     DbModule,
     RedisModule,
+    JwtModule,
     MongooseModule.forFeature([
       {
         name: UserPassword.name,
         schema: UserPasswordSchema,
       },
     ]),
-    JwtModule,
   ],
   controllers: [AuthController],
   providers: [

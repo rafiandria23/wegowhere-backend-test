@@ -5,6 +5,7 @@ import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { CommonModule } from '@app/common';
 import { DbModule } from '@app/db';
 import { RedisModule } from '@app/redis';
+import { JwtModule } from '@app/jwt';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
 import { ChatRoom, ChatRoomSchema } from './schemas/chat-room.schema';
@@ -16,6 +17,7 @@ import { ChatMessage, ChatMessageSchema } from './schemas/chat-message.schema';
     CommonModule,
     DbModule,
     RedisModule,
+    JwtModule,
     MongooseModule.forFeature([
       {
         name: ChatRoom.name,

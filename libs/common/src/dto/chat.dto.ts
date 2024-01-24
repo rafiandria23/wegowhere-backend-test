@@ -34,3 +34,21 @@ export class ChatSaveMessageDto {
   @IsNotEmpty()
   readonly content: string;
 }
+
+export class ChatFindRoomByIdDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly room_id: string;
+}
+
+export class ChatFindAllMembersByRoomIdDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly room_id: string;
+}
+
+export class ChatFindAllMessagesByRoomIdDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly room_id: string;
+}

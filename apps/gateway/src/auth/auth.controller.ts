@@ -10,7 +10,7 @@ import {
 import { ClientProxy } from '@nestjs/microservices';
 import {
   AuthEvent,
-  AuthHttpGuard,
+  AuthGuard,
   AuthSignInDto,
   AuthSignUpDto,
   CommonService,
@@ -19,7 +19,7 @@ import {
 import { firstValueFrom } from 'rxjs';
 
 @Controller('/api/v1/auth')
-@UseGuards(AuthHttpGuard)
+@UseGuards(AuthGuard)
 export class AuthController {
   constructor(
     private readonly commonService: CommonService,

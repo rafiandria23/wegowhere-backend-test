@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Schema as MongooseSchema } from 'mongoose';
+import { Model } from 'mongoose';
 import {
   UserCreateDto,
   UserFindByIdDto,
@@ -31,9 +31,7 @@ export class UserService {
   }
 
   async findById(payload: UserFindByIdDto) {
-    const foundUser = await this.userModel.findById(
-      new MongooseSchema.Types.ObjectId(payload.user_id),
-    );
+    const foundUser = await this.userModel.findById(payload.user_id);
 
     if (!foundUser) {
       return null;

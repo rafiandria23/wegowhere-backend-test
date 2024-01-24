@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
-import { Model, Schema as MongooseSchema } from 'mongoose';
+import { Model } from 'mongoose';
 import {
   ChatCreateRoomDto,
   ChatJoinRoomDto,
@@ -31,7 +31,7 @@ export class ChatService {
 
     await this.chatMemberModel.create({
       room_id: createdRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(user_id),
+      user_id,
     });
 
     return createdRoom;
@@ -48,7 +48,7 @@ export class ChatService {
 
     await this.chatMemberModel.create({
       room_id: foundRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(user_id),
+      user_id,
     });
   }
 
@@ -63,7 +63,7 @@ export class ChatService {
 
     await this.chatMessageModel.create({
       room_id: foundRoom._id,
-      user_id: new MongooseSchema.Types.ObjectId(user_id),
+      user_id,
       content: payload.content,
     });
   }
@@ -75,9 +75,7 @@ export class ChatService {
   }
 
   async findRoomById(room_id: string) {
-    const foundRoom = await this.chatRoomModel.findById(
-      new MongooseSchema.Types.ObjectId(room_id),
-    );
+    const foundRoom = await this.chatRoomModel.findById(room_id);
 
     if (!foundRoom) {
       return null;
@@ -88,7 +86,7 @@ export class ChatService {
 
   async findAllMembersByRoomId(room_id: string) {
     const foundMembers = await this.chatMemberModel.find({
-      room_id: new MongooseSchema.Types.ObjectId(room_id),
+      room_id,
     });
 
     return foundMembers.map((member) => member.toObject());
@@ -96,7 +94,7 @@ export class ChatService {
 
   async findAllMessagesByRoomId(room_id: string) {
     const foundMessages = await this.chatMessageModel.find({
-      room_id: new MongooseSchema.Types.ObjectId(room_id),
+      room_id,
     });
 
     return foundMessages.map((message) => message.toObject());

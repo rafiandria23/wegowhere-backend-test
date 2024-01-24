@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { RmqRecordBuilder } from '@nestjs/microservices';
 import dayjs from 'dayjs';
 
 @Injectable()
@@ -16,7 +17,25 @@ export class CommonService {
 
     return {
       success,
-      timestamp: dayjs(),
+      timestamp,
     };
+  }
+
+  buildRmqRecord<T = unknown>({
+    authorization,
+    payload,
+  }: {
+    authorization: string;
+    payload: T;
+  }) {
+    const record = new RmqRecordBuilder<T>(payload)
+      .setOptions({
+        headers: {
+          authorization,
+        },
+      })
+      .build();
+
+    return record;
   }
 }

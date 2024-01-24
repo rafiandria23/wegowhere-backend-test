@@ -5,10 +5,10 @@ import {
   HttpStatus,
   UseGuards,
 } from '@nestjs/common';
-import { AuthHttpGuard, CommonService, Public } from '@app/common';
+import { AuthGuard, CommonService, Public } from '@app/common';
 
 @Controller('/')
-@UseGuards(AuthHttpGuard)
+@UseGuards(AuthGuard)
 export class GatewayController {
   constructor(private readonly commonService: CommonService) {}
 

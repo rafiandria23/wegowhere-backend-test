@@ -1,7 +1,13 @@
 import { Controller, UseGuards } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
 import {
-  AuthRpcGuard,
+  Ctx,
+  MessagePattern,
+  Payload,
+  RmqContext,
+} from '@nestjs/microservices';
+import {
+  AuthGuard,
+  Public,
   UserCreateDto,
   UserEvent,
   UserFindByIdDto,
@@ -11,13 +17,14 @@ import { RedisService } from '@app/redis';
 import { UserService } from './user.service';
 
 @Controller()
-@UseGuards(AuthRpcGuard)
+@UseGuards(AuthGuard)
 export class UserController {
   constructor(
     private readonly redisService: RedisService,
     private readonly userService: UserService,
   ) {}
 
+  @Public()
   @MessagePattern(UserEvent.CREATE)
   async create(@Payload() payload: UserCreateDto) {
     const result = await this.userService.create(payload);
@@ -48,6 +55,7 @@ export class UserController {
     return result;
   }
 
+  @Public()
   @MessagePattern(UserEvent.FIND_BY_USERNAME)
   async findByUsername(@Payload() payload: UserFindByUsernameDto) {
     const result = await this.userService.findByUsername(payload);
@@ -61,9 +69,9 @@ export class UserController {
   }
 
   @MessagePattern(UserEvent.ME)
-  async me() {
+  async me(@Ctx() ctx: RmqContext) {
     const result = await this.redisService.cacheResult({
-      key: `user.user_id_from_payload`,
+      key: `user.${ctx.getMessage().auth.user_id}`,
       handler: {
         fn: this.userService.me.bind(this),
       },

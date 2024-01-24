@@ -1,32 +1,50 @@
 import { Controller, UseGuards } from '@nestjs/common';
-import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
+import {
+  Ctx,
+  EventPattern,
+  MessagePattern,
+  Payload,
+  RmqContext,
+} from '@nestjs/microservices';
 import {
   ChatSaveMessageDto,
   ChatEvent,
   ChatCreateRoomDto,
   ChatJoinRoomDto,
-  AuthRpcGuard,
+  AuthGuard,
 } from '@app/common';
 import { ChatService } from './chat.service';
 
 @Controller()
-@UseGuards(AuthRpcGuard)
+@UseGuards(AuthGuard)
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 
   @MessagePattern(ChatEvent.CREATE_ROOM)
-  async createRoom(@Payload() payload: ChatCreateRoomDto) {
-    return await this.chatService.createRoom('aasdasd', payload);
+  async createRoom(
+    @Ctx() ctx: RmqContext,
+    @Payload() payload: ChatCreateRoomDto,
+  ) {
+    return await this.chatService.createRoom(
+      ctx.getMessage().auth.user_id,
+      payload,
+    );
   }
 
   @MessagePattern(ChatEvent.JOIN_ROOM)
-  async joinRoom(@Payload() payload: ChatJoinRoomDto) {
-    return await this.chatService.joinRoom('asdasdas', payload);
+  async joinRoom(@Ctx() ctx: RmqContext, @Payload() payload: ChatJoinRoomDto) {
+    return await this.chatService.joinRoom(
+      ctx.getMessage().auth.user_id,
+      payload,
+    );
   }
 
   @EventPattern(ChatEvent.SAVE_MESSAGE)
-  async saveMessage(@Payload() payload: ChatSaveMessageDto) {
-    await this.chatService.saveMessage('asdasd', payload);
+  async saveMessage(
+    @Ctx() ctx: RmqContext,
+    @Payload() payload: ChatSaveMessageDto,
+  ) {
+    await this.chatService.saveMessage(ctx.getMessage().auth.user_id, payload);
   }
 
   @MessagePattern(ChatEvent.FIND_ALL_ROOMS)

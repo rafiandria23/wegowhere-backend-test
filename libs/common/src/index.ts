@@ -13,7 +13,6 @@ export * from './dto/user.dto';
 export * from './dto/auth.dto';
 export * from './dto/chat.dto';
 
-export * from './guards/http.guard';
-export * from './guards/rpc.guard';
+export * from './guards/auth.guard';
 
 export * from './interfaces/auth.interface';

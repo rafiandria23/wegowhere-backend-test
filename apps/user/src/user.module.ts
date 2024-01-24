@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CommonModule } from '@app/common';
 import { DbModule } from '@app/db';
 import { RedisModule } from '@app/redis';
+import { JwtModule } from '@app/jwt';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User, UserSchema } from './schemas/user.schema';
@@ -12,6 +13,7 @@ import { User, UserSchema } from './schemas/user.schema';
     CommonModule,
     DbModule,
     RedisModule,
+    JwtModule,
     MongooseModule.forFeature([
       {
         name: User.name,
