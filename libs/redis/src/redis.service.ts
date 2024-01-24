@@ -25,11 +25,35 @@ export class RedisService {
     if (!cachedResult) {
       const result = await handler.fn(handler.args);
 
+      if (!result) {
+        return null;
+      }
+
       await this.cacheManager.set(key, JSON.stringify(result), ttl);
 
       return result;
     }
 
     return JSON.parse(cachedResult as string);
+  }
+
+  async get<T = unknown>(key: string) {
+    return await this.cacheManager.get<T>(key);
+  }
+
+  async set<T = unknown>({
+    key,
+    payload,
+    ttl = 60 * 60 * 24,
+  }: {
+    key: string;
+    payload: T;
+    ttl?: number;
+  }) {
+    await this.cacheManager.set(key, payload, ttl);
+  }
+
+  async del(key: string) {
+    await this.cacheManager.del(key);
   }
 }

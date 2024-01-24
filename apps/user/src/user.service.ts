@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { UserCreateDto } from '@app/common';
+import { Model, Schema as MongooseSchema } from 'mongoose';
+import {
+  UserCreateDto,
+  UserFindByIdDto,
+  UserFindByUsernameDto,
+} from '@app/common';
 import { User } from './schemas/user.schema';
 
 @Injectable()
@@ -26,8 +30,22 @@ export class UserService {
     return foundUsers.map((user) => user.toObject());
   }
 
-  async findByUsername(username: string) {
-    const foundUser = await this.userModel.findOne({ username });
+  async findById(payload: UserFindByIdDto) {
+    const foundUser = await this.userModel.findById(
+      new MongooseSchema.Types.ObjectId(payload.user_id),
+    );
+
+    if (!foundUser) {
+      return null;
+    }
+
+    return foundUser.toObject();
+  }
+
+  async findByUsername(payload: UserFindByUsernameDto) {
+    const foundUser = await this.userModel.findOne({
+      username: payload.username,
+    });
 
     if (!foundUser) {
       return null;

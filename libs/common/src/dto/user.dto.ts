@@ -14,6 +14,12 @@ export class UserCreateDto {
   readonly username: string;
 }
 
+export class UserFindByIdDto {
+  @IsString()
+  @IsNotEmpty()
+  readonly user_id: string;
+}
+
 export class UserFindByUsernameDto {
   @IsString()
   @IsNotEmpty()
