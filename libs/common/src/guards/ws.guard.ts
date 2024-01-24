@@ -1,17 +1,13 @@
 import _ from 'lodash';
 import { Reflector } from '@nestjs/core';
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { WsException } from '@nestjs/websockets';
 import { JwtService } from '@app/jwt';
 import { AuthMetadata } from '../constants/auth.constant';
 import { AuthHttpRequest } from '../interfaces/auth.interface';
 
 @Injectable()
-export class AuthHttpGuard implements CanActivate {
+export class AuthWsGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
     private reflector: Reflector,
@@ -31,13 +27,13 @@ export class AuthHttpGuard implements CanActivate {
     const authorizationHeader = req.headers.authorization;
 
     if (!authorizationHeader) {
-      throw new UnauthorizedException();
+      throw new WsException('');
     }
 
     const [type, token] = authorizationHeader.split(' ');
 
     if (type !== 'Bearer' || !token) {
-      throw new UnauthorizedException();
+      throw new WsException('');
     }
 
     try {
@@ -45,7 +41,7 @@ export class AuthHttpGuard implements CanActivate {
 
       _.set(req, 'auth', tokenPayload);
     } catch (err) {
-      throw new UnauthorizedException(err);
+      throw new WsException(err);
     }
 
     return true;

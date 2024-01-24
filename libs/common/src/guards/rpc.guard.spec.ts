@@ -1,7 +1,7 @@
-import { RpcGuard } from './rpc.guard';
+import { AuthRpcGuard } from './rpc.guard';
 
-describe('RpcGuard', () => {
+describe('AuthRpcGuard', () => {
   it('should be defined', () => {
-    expect(new RpcGuard()).toBeDefined();
+    expect(new AuthRpcGuard()).toBeDefined();
   });
 });
