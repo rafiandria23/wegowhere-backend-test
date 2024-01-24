@@ -1,14 +1,8 @@
 import _ from 'lodash';
-import {
-  Injectable,
-  Inject,
-  NotFoundException,
-  InternalServerErrorException,
-  BadRequestException,
-} from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { ClientProxy } from '@nestjs/microservices';
-import { Model, Schema as MongooseSchema } from 'mongoose';
+import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { Model } from 'mongoose';
 import { firstValueFrom } from 'rxjs';
 import bcrypt from 'bcrypt';
 import {
@@ -31,6 +25,18 @@ export class AuthService {
   ) {}
 
   async signUp(payload: AuthSignUpDto) {
+    const foundUser = await firstValueFrom(
+      this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, {
+        username: payload.username,
+      }),
+    );
+
+    if (foundUser) {
+      throw new RpcException(
+        'User with that username already signed up! Please sign in if it is yours.',
+      );
+    }
+
     const createdUser = await firstValueFrom(
       this.userServiceClient.send(
         UserEvent.CREATE,
@@ -39,7 +45,7 @@ export class AuthService {
     );
 
     await this.userPasswordModel.create({
-      user_id: new MongooseSchema.Types.ObjectId(createdUser._id),
+      user_id: createdUser._id,
       password: payload.password,
     });
 
@@ -68,21 +74,21 @@ export class AuthService {
     );
 
     if (!foundUser) {
-      throw new NotFoundException('User is not found! Please sign up first.');
+      throw new RpcException('User is not found! Please sign up first.');
     }
 
     const foundUserPassword = await this.userPasswordModel.findOne({
-      user_id: new MongooseSchema.Types.ObjectId(foundUser._id),
+      user_id: foundUser._id,
     });
 
     if (!foundUserPassword) {
-      throw new InternalServerErrorException(
+      throw new RpcException(
         'Oops! It is from our end, please reset your password.',
       );
     }
 
     if (!(await bcrypt.compare(payload.password, foundUserPassword.password))) {
-      throw new BadRequestException('Username or password is wrong!');
+      throw new RpcException('Username or password is wrong!');
     }
 
     const tokenPayload = {
