@@ -51,8 +51,4 @@ export class UserService {
 
     return foundUser.toObject();
   }
-
-  me = async () => {
-    return {};
-  };
 }

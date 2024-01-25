@@ -1,10 +1,5 @@
 import { Controller, UseGuards } from '@nestjs/common';
-import {
-  Ctx,
-  MessagePattern,
-  Payload,
-  RmqContext,
-} from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import {
   AuthGuard,
   Public,
@@ -63,18 +58,6 @@ export class UserController {
     await this.redisService.set({
       key: `user.${result._id.toString()}`,
       payload: result,
-    });
-
-    return result;
-  }
-
-  @MessagePattern(UserEvent.ME)
-  async me(@Ctx() ctx: RmqContext) {
-    const result = await this.redisService.cacheResult({
-      key: `user.${ctx.getMessage().auth.user_id}`,
-      handler: {
-        fn: this.userService.me,
-      },
     });
 
     return result;

@@ -6,12 +6,14 @@ import {
   HttpStatus,
   Inject,
   Param,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 import {
   AuthGuard,
+  AuthHttpRequest,
   CommonService,
   UserEvent,
   UserFindByUsernameDto,
@@ -62,13 +64,18 @@ export class UserController {
 
   @Get('/me')
   @HttpCode(HttpStatus.OK)
-  async me(@Headers('authorization') authorization: string) {
+  async me(
+    @Headers('authorization') authorization: string,
+    @Request() request: AuthHttpRequest,
+  ) {
     const record = this.commonService.buildRmqRecord({
       authorization,
-      payload: {},
+      payload: {
+        user_id: request.auth.user_id,
+      },
     });
     const result = await firstValueFrom(
-      this.userServiceClient.send(UserEvent.ME, record),
+      this.userServiceClient.send(UserEvent.FIND_BY_ID, record),
     );
 
     return this.commonService.successTimestamp({
