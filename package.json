@@ -6,7 +6,7 @@
     "name": "Adam Rafiandri"
   },
   "private": true,
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
