@@ -31,18 +31,16 @@ export class ChatService {
     user_id: string;
     payload: ChatCreateRoomDto;
   }) {
-    const createdRoom = (
-      await this.chatRoomModel.create({
-        name: payload.name,
-      })
-    ).toObject();
+    const createdRoom = await this.chatRoomModel.create({
+      name: payload.name,
+    });
 
     await this.chatMemberModel.create({
       room_id: createdRoom._id,
       user_id,
     });
 
-    return createdRoom;
+    return createdRoom.toObject();
   }
 
   async joinRoom({

@@ -42,7 +42,7 @@ export class ChatController {
       payload,
     });
     const createdRoom = await firstValueFrom(
-      this.chatServiceClient.emit(ChatEvent.CREATE_ROOM, record),
+      this.chatServiceClient.send(ChatEvent.CREATE_ROOM, record),
     );
 
     return this.commonService.successTimestamp({

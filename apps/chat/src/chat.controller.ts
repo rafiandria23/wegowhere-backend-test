@@ -37,15 +37,17 @@ export class ChatController {
     @Ctx() ctx: RmqContext,
     @Payload() payload: ChatCreateRoomDto,
   ) {
-    return await this.chatService.createRoom({
+    const result = await this.chatService.createRoom({
       user_id: _.get(ctx.getMessage(), 'auth.user_id'),
       payload,
     });
+
+    return result;
   }
 
   @MessagePattern(ChatEvent.JOIN_ROOM)
   async joinRoom(@Ctx() ctx: RmqContext, @Payload() payload: ChatJoinRoomDto) {
-    return await this.chatService.joinRoom({
+    await this.chatService.joinRoom({
       user_id: _.get(ctx.getMessage(), 'auth.user_id'),
       payload,
     });
@@ -64,12 +66,16 @@ export class ChatController {
 
   @MessagePattern(ChatEvent.FIND_ALL_ROOMS)
   async findAllRooms() {
-    return await this.chatService.findAllRooms();
+    const result = await this.chatService.findAllRooms();
+
+    return result;
   }
 
   @MessagePattern(ChatEvent.FIND_ROOM_BY_ID)
   async findRoomById(@Payload() payload: ChatFindRoomByIdDto) {
-    return await this.chatService.findRoomById(payload);
+    const result = await this.chatService.findRoomById(payload);
+
+    return result;
   }
 
   @MessagePattern(ChatEvent.FIND_ALL_MEMBERS_BY_ROOM_ID)

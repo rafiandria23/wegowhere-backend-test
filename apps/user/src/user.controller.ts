@@ -55,6 +55,10 @@ export class UserController {
   async findByUsername(@Payload() payload: UserFindByUsernameDto) {
     const result = await this.userService.findByUsername(payload);
 
+    if (!result) {
+      return null;
+    }
+
     await this.redisService.set({
       key: `user.${result._id.toString()}`,
       payload: result,
