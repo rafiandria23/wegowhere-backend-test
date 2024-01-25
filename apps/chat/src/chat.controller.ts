@@ -3,7 +3,6 @@ import { Controller, Inject, UseGuards } from '@nestjs/common';
 import {
   ClientProxy,
   Ctx,
-  EventPattern,
   MessagePattern,
   Payload,
   RmqContext,
@@ -53,15 +52,38 @@ export class ChatController {
     });
   }
 
-  @EventPattern(ChatEvent.SAVE_MESSAGE)
+  @MessagePattern(ChatEvent.SAVE_MESSAGE)
   async saveMessage(
     @Ctx() ctx: RmqContext,
     @Payload() payload: ChatSaveMessageDto,
   ) {
-    await this.chatService.saveMessage({
-      user_id: _.get(ctx.getMessage(), 'auth.user_id'),
-      payload,
-    });
+    const [foundUser, savedMessage] = await Promise.all([
+      firstValueFrom(
+        this.userServiceClient.send(
+          UserEvent.FIND_BY_ID,
+          this.commonService.buildRmqRecord({
+            authorization: _.get(
+              ctx.getMessage(),
+              'properties.headers.authorization',
+            ),
+            payload: {
+              user_id: _.get(ctx.getMessage(), 'auth.user_id'),
+            },
+          }),
+        ),
+      ),
+      this.chatService.saveMessage({
+        user_id: _.get(ctx.getMessage(), 'auth.user_id'),
+        payload,
+      }),
+    ]);
+
+    const result = {
+      ...savedMessage,
+      user: foundUser,
+    };
+
+    return result;
   }
 
   @MessagePattern(ChatEvent.FIND_ALL_ROOMS)
@@ -83,10 +105,10 @@ export class ChatController {
     @Ctx() ctx: RmqContext,
     @Payload() payload: ChatFindAllMembersByRoomIdDto,
   ) {
-    const members = await this.chatService.findAllMembersByRoomId(payload);
+    const foundMembers = await this.chatService.findAllMembersByRoomId(payload);
 
     const result = await Promise.all(
-      members.map(async (member) => {
+      foundMembers.map(async (member) => {
         const user = await firstValueFrom(
           this.userServiceClient.send(
             UserEvent.FIND_BY_ID,
@@ -117,10 +139,11 @@ export class ChatController {
     @Ctx() ctx: RmqContext,
     @Payload() payload: ChatFindAllMessagesByRoomIdDto,
   ) {
-    const messages = await this.chatService.findAllMessagesByRoomId(payload);
+    const foundMessages =
+      await this.chatService.findAllMessagesByRoomId(payload);
 
     const result = await Promise.all(
-      messages.map(async (message) => {
+      foundMessages.map(async (message) => {
         const user = await firstValueFrom(
           this.userServiceClient.send(
             UserEvent.FIND_BY_ID,

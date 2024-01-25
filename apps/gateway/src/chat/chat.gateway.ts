@@ -9,6 +9,7 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { first } from 'rxjs';
 import {
   AuthGuard,
   ChatEvent,
@@ -29,7 +30,7 @@ export class ChatGateway {
   ) {}
 
   @SubscribeMessage(ChatSocketEvent.SEND_MESSAGE)
-  handleMessage(
+  saveMessage(
     @ConnectedSocket() client: Socket,
     @MessageBody() payload: ChatSaveMessageDto,
   ) {
@@ -37,14 +38,12 @@ export class ChatGateway {
       authorization: _.get(client, 'handshake.headers.authorization'),
       payload,
     });
-    this.chatServiceClient.emit(ChatEvent.SAVE_MESSAGE, record);
 
-    return {
-      event: ChatSocketEvent.RECEIVE_MESSAGE,
-      data: {
-        user_id: _.get(client, 'handshake.auth.user_id'),
-        ...payload,
-      },
-    };
+    this.chatServiceClient
+      .send(ChatEvent.SAVE_MESSAGE, record)
+      .pipe(first())
+      .subscribe((savedMessage) => {
+        this.server.emit(ChatSocketEvent.RECEIVE_MESSAGE, savedMessage);
+      });
   }
 }

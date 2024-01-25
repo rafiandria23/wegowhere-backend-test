@@ -83,11 +83,13 @@ export class ChatService {
       );
     }
 
-    await this.chatMessageModel.create({
+    const savedMessage = await this.chatMessageModel.create({
       room_id: foundRoom._id,
       user_id,
       content: payload.content,
     });
+
+    return savedMessage.toObject();
   }
 
   async findAllRooms() {

@@ -34,6 +34,7 @@ export class UserController {
       authorization,
       payload: {},
     });
+
     const result = await firstValueFrom(
       this.userServiceClient.send(UserEvent.FIND_ALL, record),
     );
@@ -53,6 +54,7 @@ export class UserController {
       authorization,
       payload,
     });
+
     const result = await firstValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, record),
     );
@@ -74,6 +76,7 @@ export class UserController {
         user_id: request.auth.user_id,
       },
     });
+
     const result = await firstValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_ID, record),
     );

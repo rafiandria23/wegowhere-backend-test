@@ -41,6 +41,7 @@ export class ChatController {
       authorization,
       payload,
     });
+
     const createdRoom = await firstValueFrom(
       this.chatServiceClient.send(ChatEvent.CREATE_ROOM, record),
     );
@@ -60,6 +61,7 @@ export class ChatController {
       authorization,
       payload,
     });
+
     this.chatServiceClient.emit(ChatEvent.JOIN_ROOM, record);
 
     return this.commonService.successTimestamp();
@@ -72,6 +74,7 @@ export class ChatController {
       authorization,
       payload: {},
     });
+
     const foundRooms = await firstValueFrom(
       this.chatServiceClient.send(ChatEvent.FIND_ALL_ROOMS, record),
     );
@@ -89,6 +92,7 @@ export class ChatController {
       authorization,
       payload,
     });
+
     const foundRoom = await firstValueFrom(
       this.chatServiceClient.send(ChatEvent.FIND_ROOM_BY_ID, record),
     );
@@ -106,6 +110,7 @@ export class ChatController {
       authorization,
       payload,
     });
+
     const foundMembers = await firstValueFrom(
       this.chatServiceClient.send(
         ChatEvent.FIND_ALL_MEMBERS_BY_ROOM_ID,
@@ -126,6 +131,7 @@ export class ChatController {
       authorization,
       payload,
     });
+
     const foundMessages = await firstValueFrom(
       this.chatServiceClient.send(
         ChatEvent.FIND_ALL_MESSAGES_BY_ROOM_ID,
