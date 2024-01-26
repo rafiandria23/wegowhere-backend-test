@@ -3,7 +3,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { Model } from 'mongoose';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import bcrypt from 'bcrypt';
 import { AuthSignUpDto, UserEvent, AuthSignInDto } from '@app/common';
 import { JwtService } from '@app/jwt';
@@ -19,7 +19,7 @@ export class AuthService {
   ) {}
 
   async signUp(payload: AuthSignUpDto) {
-    const foundUser = await firstValueFrom(
+    const foundUser = await lastValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, {
         username: payload.username,
       }),
@@ -31,7 +31,7 @@ export class AuthService {
       );
     }
 
-    const createdUser = await firstValueFrom(
+    const createdUser = await lastValueFrom(
       this.userServiceClient.send(
         UserEvent.CREATE,
         _.omit(payload, ['password']),
@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   async signIn(payload: AuthSignInDto) {
-    const foundUser = await firstValueFrom(
+    const foundUser = await lastValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, {
         username: payload.username,
       }),

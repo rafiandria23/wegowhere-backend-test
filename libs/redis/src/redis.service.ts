@@ -38,7 +38,9 @@ export class RedisService {
   }
 
   async get<T = unknown>(key: string) {
-    return await this.cacheManager.get<T>(key);
+    const cachedResult = await this.cacheManager.get<string>(key);
+
+    return JSON.parse(cachedResult) as T;
   }
 
   async set<T = unknown>({
@@ -50,7 +52,7 @@ export class RedisService {
     payload: T;
     ttl?: number;
   }) {
-    await this.cacheManager.set(key, payload, ttl);
+    await this.cacheManager.set(key, JSON.stringify(payload), ttl);
   }
 
   async del(key: string) {

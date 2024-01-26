@@ -20,7 +20,7 @@ import {
   UserEvent,
 } from '@app/common';
 import { ChatService } from './chat.service';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Controller()
 @UseGuards(AuthGuard)
@@ -58,7 +58,7 @@ export class ChatController {
     @Payload() payload: ChatSaveMessageDto,
   ) {
     const [foundUser, savedMessage] = await Promise.all([
-      firstValueFrom(
+      lastValueFrom(
         this.userServiceClient.send(
           UserEvent.FIND_BY_ID,
           this.commonService.buildRmqRecord({
@@ -109,7 +109,7 @@ export class ChatController {
 
     const result = await Promise.all(
       foundMembers.map(async (member) => {
-        const user = await firstValueFrom(
+        const user = await lastValueFrom(
           this.userServiceClient.send(
             UserEvent.FIND_BY_ID,
             this.commonService.buildRmqRecord({
@@ -144,7 +144,7 @@ export class ChatController {
 
     const result = await Promise.all(
       foundMessages.map(async (message) => {
-        const user = await firstValueFrom(
+        const user = await lastValueFrom(
           this.userServiceClient.send(
             UserEvent.FIND_BY_ID,
             this.commonService.buildRmqRecord({

@@ -79,7 +79,7 @@ export class ChatService {
 
     if (!foundRoom) {
       throw new RpcException(
-        'Chat room is not found! Please create one first!',
+        'Chat room is not found! Please create one first.',
       );
     }
 

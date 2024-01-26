@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import {
   AuthGuard,
   AuthHttpRequest,
@@ -35,7 +35,7 @@ export class UserController {
       payload: {},
     });
 
-    const result = await firstValueFrom(
+    const result = await lastValueFrom(
       this.userServiceClient.send(UserEvent.FIND_ALL, record),
     );
 
@@ -55,7 +55,7 @@ export class UserController {
       payload,
     });
 
-    const result = await firstValueFrom(
+    const result = await lastValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_USERNAME, record),
     );
 
@@ -77,7 +77,7 @@ export class UserController {
       },
     });
 
-    const result = await firstValueFrom(
+    const result = await lastValueFrom(
       this.userServiceClient.send(UserEvent.FIND_BY_ID, record),
     );
 

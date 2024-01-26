@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import {
   AuthGuard,
   ChatCreateRoomDto,
@@ -42,7 +42,7 @@ export class ChatController {
       payload,
     });
 
-    const createdRoom = await firstValueFrom(
+    const createdRoom = await lastValueFrom(
       this.chatServiceClient.send(ChatEvent.CREATE_ROOM, record),
     );
 
@@ -75,7 +75,7 @@ export class ChatController {
       payload: {},
     });
 
-    const foundRooms = await firstValueFrom(
+    const foundRooms = await lastValueFrom(
       this.chatServiceClient.send(ChatEvent.FIND_ALL_ROOMS, record),
     );
 
@@ -93,7 +93,7 @@ export class ChatController {
       payload,
     });
 
-    const foundRoom = await firstValueFrom(
+    const foundRoom = await lastValueFrom(
       this.chatServiceClient.send(ChatEvent.FIND_ROOM_BY_ID, record),
     );
 
@@ -111,7 +111,7 @@ export class ChatController {
       payload,
     });
 
-    const foundMembers = await firstValueFrom(
+    const foundMembers = await lastValueFrom(
       this.chatServiceClient.send(
         ChatEvent.FIND_ALL_MEMBERS_BY_ROOM_ID,
         record,
@@ -132,7 +132,7 @@ export class ChatController {
       payload,
     });
 
-    const foundMessages = await firstValueFrom(
+    const foundMessages = await lastValueFrom(
       this.chatServiceClient.send(
         ChatEvent.FIND_ALL_MESSAGES_BY_ROOM_ID,
         record,

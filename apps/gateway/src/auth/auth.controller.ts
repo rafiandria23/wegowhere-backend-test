@@ -16,7 +16,7 @@ import {
   CommonService,
   Public,
 } from '@app/common';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Controller('/api/v1/auth')
 @UseGuards(AuthGuard)
@@ -30,7 +30,7 @@ export class AuthController {
   @Post('/sign-up')
   @HttpCode(HttpStatus.CREATED)
   async signUp(@Body() payload: AuthSignUpDto) {
-    const result = await firstValueFrom(
+    const result = await lastValueFrom(
       this.authServiceClient.send(AuthEvent.SIGN_UP, payload),
     );
 
@@ -41,7 +41,7 @@ export class AuthController {
   @Post('/sign-in')
   @HttpCode(HttpStatus.OK)
   async signIn(@Body() payload: AuthSignInDto) {
-    const result = await firstValueFrom(
+    const result = await lastValueFrom(
       this.authServiceClient.send(AuthEvent.SIGN_IN, payload),
     );
 
