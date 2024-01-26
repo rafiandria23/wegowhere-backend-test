@@ -1,73 +1,225 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# WeGoWhere Backend Test
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend Test for WeGoWhere. Chat API that emphasize on real-time communication and message delivery.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tech Stacks
 
-## Description
+- Node.js
+- TypeScript
+- Nest.js
+- MongoDB
+- Redis
+- RabbitMQ
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Microservices
+
+- User
+- Auth
+- Chat
+- Gateway
+
+## Environment
+
+Environment variables are available in `.env.template` file.
 
 ## Installation
 
-```bash
-$ npm install
+```zsh
+npm i
 ```
 
-## Running the app
+## Development
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```zsh
+npm run start:dev $SVC
 ```
 
-## Test
+Where `$SVC` is the service name of `gateway`, `user`, `auth`, and `chat`.
 
-```bash
-# unit tests
-$ npm run test
+## Docker Image
 
-# e2e tests
-$ npm run test:e2e
+Build the Docker image for each microservice.
 
-# test coverage
-$ npm run test:cov
+```zsh
+docker build -t wegowhere-backend-test --build-arg SVC=$SVC .
 ```
 
-## Support
+Where `$SVC` is the service name of `gateway`, `user`, `auth`, and `chat`.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Deployment
 
-## Stay in touch
+You can user Docker Compose, Docker Swarm, or Kubernetes. Note that the reverse proxy has to point to the `gateway` service.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Usage
+
+1. Sign up or sign in to retrieve an access token.
+    - `POST /api/v1/auth/sign-up`
+      - Request
+
+        ```json
+        {
+          "first_name": "required string",
+          "last_name:": "required optional string",
+          "username": "string with minimum length of 6 characters",
+          "password": "string with minimum length of 6 characters"
+        }
+        ```
+
+      - Response
+
+        ```json
+        {
+          "success": "boolean",
+          "timestamp": "Date",
+          "data": {
+            "access": "string",
+            "refresh": "string"
+          }
+        }
+        ```
+
+    - `POST /api/v1/auth/sign-in`
+      - Request
+
+        ```json
+        {
+          "username": "string with minimum length of 6 characters",
+          "password": "string with minimum length of 6 characters"
+        }
+        ```
+
+      - Response
+
+        ```json
+        {
+          "success": "boolean",
+          "timestamp": "Date",
+          "data": {
+            "access": "string",
+            "refresh": "string"
+          }
+        }
+        ```
+
+2. Create or join an existing room.
+    - `POST /api/v1/chat/rooms`
+      - Headers
+
+        ```json
+        {
+          "Authorization": "Bearer ACCESS_TOKEN"
+        }
+        ```
+
+      - Request
+
+        ```json
+        {
+          "name": "required string"
+        }
+        ```
+
+      - Response
+
+        ```json
+        {
+          "success": "boolean",
+          "timestamp": "Date",
+          "data": {
+            "_id": "ObjectId",
+            "name": "string",
+            "created_at": "Date",
+            "updated_at": "Date"
+          }
+        }
+        ```
+
+    - `POST /api/v1/chat/rooms/join`
+      - Headers
+
+        ```json
+        {
+          "Authorization": "Bearer ACCESS_TOKEN"
+        }
+        ```
+
+      - Request
+
+        ```json
+        {
+          "room_id": "required ObjectId"
+        }
+        ```
+
+      - Response
+
+        ```json
+        {
+          "success": "boolean",
+          "timestamp": "Date"
+        }
+        ```
+
+3. Use `room_id` and the access token to connect to the socket server.
+    - Headers
+
+      ```json
+      {
+        "Authorization": "Bearer ACCESS_TOKEN"
+      }
+      ```
+
+    - Body
+4. Subscribe to the `chat.message.receive` event to receive messages.
+    - Headers
+
+      ```json
+      {
+        "Authorization": "Bearer ACCESS_TOKEN"
+      }
+      ```
+
+    - Body
+
+      ```json
+      {
+        "room_id": "required ObjectId",
+        "content": "required string"
+      }
+      ```
+
+5. Send an event of `chat.message.send` to send a message.
+    - Headers
+
+      ```json
+      {
+        "Authorization": "Bearer ACCESS_TOKEN"
+      }
+      ```
+
+    - Body
+
+      ```json
+      {
+        "_id": "ObjectId",
+        "room_id": "ObjectId",
+        "user_id": "ObjectId",
+        "content": "string",
+        "created_at": "Date",
+        "updated_at": "Date",
+        "user": {
+          "_id": "ObjectId",
+          "first_name": "string",
+          "last_name": "string",
+          "username": "string",
+          "created_at": "Date",
+          "updated_at": "Date",
+        }
+      }
+      ```
+
+The rest of API endpoint documentations is available at `http://${GATEWAY_HOST}:${GATEWAY_PORT}/docs`.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+[MIT](LICENSE)
