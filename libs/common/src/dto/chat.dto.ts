@@ -36,19 +36,28 @@ export class ChatSaveMessageDto {
 }
 
 export class ChatFindRoomByIdDto {
-  @IsString()
+  @ApiProperty({
+    required: true,
+  })
+  @IsMongoId()
   @IsNotEmpty()
   readonly room_id: string;
 }
 
 export class ChatFindAllMembersByRoomIdDto {
-  @IsString()
+  @ApiProperty({
+    required: true,
+  })
+  @IsMongoId()
   @IsNotEmpty()
   readonly room_id: string;
 }
 
 export class ChatFindAllMessagesByRoomIdDto {
-  @IsString()
+  @ApiProperty({
+    required: true,
+  })
+  @IsMongoId()
   @IsNotEmpty()
   readonly room_id: string;
 }
