@@ -8,7 +8,7 @@ ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/svc
 COPY ./package.json ./package-lock.json ./
-RUN npm i
+RUN npm ci
 COPY ./ ./
 RUN npm run build ${SVC}
 
@@ -19,7 +19,7 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/svc
 COPY ./package.json ./package-lock.json ./
-RUN npm i --production
+RUN npm ci --production
 COPY --from=development /usr/src/svc/dist ./dist
 
 # Main File
