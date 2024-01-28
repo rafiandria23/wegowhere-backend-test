@@ -1,22 +1,22 @@
 # WeGoWhere Backend Test
 
-Backend Test for WeGoWhere. Chat API that emphasize on real-time communication and message delivery.
+Backend Test for WeGoWhere. Chat API that emphasizes on real-time communication and message delivery.
 
 ## Tech Stacks
 
-- Node.js
-- TypeScript
-- Nest.js
-- MongoDB
-- Redis
-- RabbitMQ
+- [Node.js](https://nodejs.org)
+- [TypeScript](https://typescriptlang.org)
+- [Nest.js](https://nestjs.com)
+- [MongoDB](https://mongodb.com)
+- [Redis](https://redis.io)
+- [RabbitMQ](https://rabbitmq.com)
 
 ## Microservices
 
-- User
-- Auth
-- Chat
-- Gateway
+- [User](apps/user/)
+- [Auth](apps/auth/)
+- [Chat](apps/chat/)
+- [Gateway](apps/gateway/)
 
 ## Environment
 
@@ -34,21 +34,21 @@ npm i
 npm run start:dev $SVC
 ```
 
-Where `$SVC` is the service name of `gateway`, `user`, `auth`, and `chat`.
+Where `$SVC` is service name of `gateway`, `user`, `auth`, and `chat`.
 
 ## Docker Image
 
-Build the Docker image for each microservice.
+Build Docker image for each microservice.
 
 ```zsh
 docker build -t wegowhere-backend-test --build-arg SVC=$SVC .
 ```
 
-Where `$SVC` is the service name of `gateway`, `user`, `auth`, and `chat`.
+Where `$SVC` is service name of `gateway`, `user`, `auth`, and `chat`.
 
 ## Deployment
 
-You can user Docker Compose, Docker Swarm, or Kubernetes. Note that the reverse proxy has to point to the `gateway` service.
+You can user Docker Compose, Docker Swarm, or Kubernetes. Note that reverse proxy has to point to `gateway` service.
 
 ## Usage
 
@@ -160,7 +160,7 @@ You can user Docker Compose, Docker Swarm, or Kubernetes. Note that the reverse 
         }
         ```
 
-3. Use `room_id` and the access token to connect to the socket server.
+3. Use `room_id` and access token to connect to socket server.
     - Headers
 
       ```json
@@ -170,7 +170,7 @@ You can user Docker Compose, Docker Swarm, or Kubernetes. Note that the reverse 
       ```
 
     - Body
-4. Subscribe to the `chat.message.receive` event to receive messages.
+4. Subscribe to `chat.message.receive` event to receive messages.
     - Headers
 
       ```json
