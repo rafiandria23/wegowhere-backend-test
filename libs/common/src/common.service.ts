@@ -4,10 +4,10 @@ import dayjs from 'dayjs';
 
 @Injectable()
 export class CommonService {
-  successTimestamp({ success = true, data = null } = {}) {
+  successTimestamp({ success = true, data = undefined } = {}) {
     const timestamp = dayjs();
 
-    if (data) {
+    if (data || data === null) {
       return {
         success,
         timestamp,
