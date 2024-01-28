@@ -1,17 +1,23 @@
 import _ from 'lodash';
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { ClientProxy } from '@nestjs/microservices';
 import { Model } from 'mongoose';
 import { lastValueFrom } from 'rxjs';
 import bcrypt from 'bcrypt';
-import { AuthSignUpDto, UserEvent, AuthSignInDto } from '@app/common';
+import {
+  AuthSignUpDto,
+  UserEvent,
+  AuthSignInDto,
+  CommonService,
+} from '@app/common';
 import { JwtService } from '@app/jwt';
 import { UserPassword } from './schemas/user-password.schema';
 
 @Injectable()
 export class AuthService {
   constructor(
+    private readonly commonService: CommonService,
     private readonly jwtService: JwtService,
     @InjectModel(UserPassword.name)
     private readonly userPasswordModel: Model<UserPassword>,
@@ -26,9 +32,10 @@ export class AuthService {
     );
 
     if (foundUser) {
-      throw new RpcException(
-        'User with that username already signed up! Please sign in if it is yours.',
-      );
+      throw this.commonService.createRpcException({
+        status: HttpStatus.UNPROCESSABLE_ENTITY,
+        data: 'User with that username already signed up! Please sign in if it is yours.',
+      });
     }
 
     const createdUser = await lastValueFrom(
@@ -66,7 +73,10 @@ export class AuthService {
     );
 
     if (!foundUser) {
-      throw new RpcException('User is not found! Please sign up first.');
+      throw this.commonService.createRpcException({
+        status: HttpStatus.NOT_FOUND,
+        data: 'User is not found! Please sign up first.',
+      });
     }
 
     const foundUserPassword = await this.userPasswordModel.findOne({
@@ -74,13 +84,17 @@ export class AuthService {
     });
 
     if (!foundUserPassword) {
-      throw new RpcException(
-        'Oops! It is from our end, please reset your password.',
-      );
+      throw this.commonService.createRpcException({
+        status: HttpStatus.NOT_FOUND,
+        data: 'Please reset your password!',
+      });
     }
 
     if (!(await bcrypt.compare(payload.password, foundUserPassword.password))) {
-      throw new RpcException('Username or password is wrong!');
+      throw this.commonService.createRpcException({
+        status: HttpStatus.BAD_REQUEST,
+        data: 'Username or password is wrong!',
+      });
     }
 
     const tokenPayload = {

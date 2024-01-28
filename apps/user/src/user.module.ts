@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { HttpStatus, Module, ValidationPipe } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CommonModule } from '@app/common';
+import { CommonModule, CommonService, ExceptionFilter } from '@app/common';
 import { DbModule } from '@app/db';
 import { RedisModule } from '@app/redis';
 import { JwtModule } from '@app/jwt';
@@ -22,6 +23,30 @@ import { User, UserSchema } from './schemas/user.schema';
     ]),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [
+    UserService,
+    {
+      provide: APP_PIPE,
+      inject: [CommonService],
+      useFactory(commonService: CommonService) {
+        return new ValidationPipe({
+          exceptionFactory(data) {
+            return commonService.createRpcException({
+              status: HttpStatus.BAD_REQUEST,
+              data,
+            });
+          },
+          validationError: {
+            value: false,
+            target: false,
+          },
+        });
+      },
+    },
+    {
+      provide: APP_FILTER,
+      useClass: ExceptionFilter,
+    },
+  ],
 })
 export class UserModule {}

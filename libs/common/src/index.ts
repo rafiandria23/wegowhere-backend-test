@@ -16,3 +16,5 @@ export * from './dto/chat.dto';
 export * from './guards/auth.guard';
 
 export * from './interfaces/auth.interface';
+
+export * from './filters/exception.filter';

@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { HttpStatus, Module, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
-import { CommonModule } from '@app/common';
+import { CommonModule, CommonService, ExceptionFilter } from '@app/common';
 import { DbModule } from '@app/db';
 import { RedisModule } from '@app/redis';
 import { JwtModule } from '@app/jwt';
@@ -29,6 +30,28 @@ import {
   controllers: [AuthController],
   providers: [
     AuthService,
+    {
+      provide: APP_PIPE,
+      inject: [CommonService],
+      useFactory(commonService: CommonService) {
+        return new ValidationPipe({
+          exceptionFactory(data) {
+            return commonService.createRpcException({
+              status: HttpStatus.BAD_REQUEST,
+              data,
+            });
+          },
+          validationError: {
+            value: false,
+            target: false,
+          },
+        });
+      },
+    },
+    {
+      provide: APP_FILTER,
+      useClass: ExceptionFilter,
+    },
     {
       provide: 'USER_SERVICE',
       inject: [ConfigService],

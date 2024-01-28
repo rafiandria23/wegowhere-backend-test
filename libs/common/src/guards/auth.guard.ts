@@ -3,21 +3,24 @@ import { Reflector } from '@nestjs/core';
 import {
   CanActivate,
   ExecutionContext,
+  HttpStatus,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { RmqContext, RpcException } from '@nestjs/microservices';
+import { RmqContext } from '@nestjs/microservices';
 import { WsException } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 import { JwtService } from '@app/jwt';
 import { AuthMetadata } from '../constants/auth.constant';
 import { AuthHttpRequest } from '../interfaces/auth.interface';
+import { CommonService } from '../common.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
-    private jwtService: JwtService,
-    private reflector: Reflector,
+    private readonly commonService: CommonService,
+    private readonly jwtService: JwtService,
+    private readonly reflector: Reflector,
   ) {}
 
   async canActivate(ctx: ExecutionContext) {
@@ -55,13 +58,15 @@ export class AuthGuard implements CanActivate {
     const authorizationHeader = request.headers.authorization;
 
     if (!authorizationHeader) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Authorization header is not found!');
     }
 
     const [type, token] = authorizationHeader.split(' ');
 
-    if (type !== 'Bearer' || !token) {
-      throw new UnauthorizedException();
+    if (type !== 'Bearer') {
+      throw new UnauthorizedException('Access token type is invalid!');
+    } else if (!token) {
+      throw new UnauthorizedException('Access token is not found!');
     }
 
     try {
@@ -69,7 +74,7 @@ export class AuthGuard implements CanActivate {
 
       _.set(request, 'auth', payload);
     } catch (err) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException(err.message);
     }
   }
 
@@ -81,13 +86,15 @@ export class AuthGuard implements CanActivate {
     );
 
     if (!authorizationHeader) {
-      throw new WsException('');
+      throw new WsException('Authorization header is not found!');
     }
 
     const [type, token] = authorizationHeader.split(' ');
 
-    if (type !== 'Bearer' || !token) {
-      throw new WsException('');
+    if (type !== 'Bearer') {
+      throw new WsException('Access token type is invalid!');
+    } else if (!token) {
+      throw new WsException('Access token is not found!');
     }
 
     try {
@@ -95,7 +102,7 @@ export class AuthGuard implements CanActivate {
 
       _.set(client.handshake, 'auth', payload);
     } catch (err) {
-      throw new WsException(err);
+      throw new WsException(err.message);
     }
   }
 
@@ -107,13 +114,24 @@ export class AuthGuard implements CanActivate {
     );
 
     if (!authorizationHeader) {
-      throw new RpcException('');
+      throw this.commonService.createRpcException({
+        status: HttpStatus.UNAUTHORIZED,
+        data: 'Authorization header is not found!',
+      });
     }
 
     const [type, token] = authorizationHeader.split(' ');
 
-    if (type !== 'Bearer' || !token) {
-      throw new RpcException('');
+    if (type !== 'Bearer') {
+      throw this.commonService.createRpcException({
+        status: HttpStatus.UNAUTHORIZED,
+        data: 'Access token type is invalid!',
+      });
+    } else if (!token) {
+      throw this.commonService.createRpcException({
+        status: HttpStatus.UNAUTHORIZED,
+        data: 'Access token is not found!',
+      });
     }
 
     try {
@@ -121,7 +139,10 @@ export class AuthGuard implements CanActivate {
 
       _.set(message, 'auth', payload);
     } catch (err) {
-      throw new RpcException(err);
+      throw this.commonService.createRpcException({
+        status: HttpStatus.UNAUTHORIZED,
+        data: err.message,
+      });
     }
   }
 }

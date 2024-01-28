@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { RpcException } from '@nestjs/microservices';
 import { Model } from 'mongoose';
 import {
   ChatCreateRoomDto,
@@ -9,6 +8,7 @@ import {
   ChatFindRoomByIdDto,
   ChatJoinRoomDto,
   ChatSaveMessageDto,
+  CommonService,
 } from '@app/common';
 import { ChatRoom } from './schemas/chat-room.schema';
 import { ChatMember } from './schemas/chat-member.schema';
@@ -17,6 +17,7 @@ import { ChatMessage } from './schemas/chat-message.schema';
 @Injectable()
 export class ChatService {
   constructor(
+    private readonly commonService: CommonService,
     @InjectModel(ChatRoom.name) private readonly chatRoomModel: Model<ChatRoom>,
     @InjectModel(ChatMember.name)
     private readonly chatMemberModel: Model<ChatMember>,
@@ -55,9 +56,10 @@ export class ChatService {
     });
 
     if (!foundRoom) {
-      throw new RpcException(
-        'Chat room is not found! Please create one first.',
-      );
+      throw this.commonService.createRpcException({
+        status: HttpStatus.NOT_FOUND,
+        data: 'Chat room is not found! Please create one first.',
+      });
     }
 
     await this.chatMemberModel.create({
@@ -78,9 +80,10 @@ export class ChatService {
     });
 
     if (!foundRoom) {
-      throw new RpcException(
-        'Chat room is not found! Please create one first.',
-      );
+      throw this.commonService.createRpcException({
+        status: HttpStatus.NOT_FOUND,
+        data: 'Chat room is not found! Please create one first.',
+      });
     }
 
     const savedMessage = await this.chatMessageModel.create({
