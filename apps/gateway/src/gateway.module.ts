@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { APP_PIPE, APP_FILTER } from '@nestjs/core';
+import { BadRequestException, Module, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { GatewayController } from './gateway.controller';
-import { CommonModule } from '@app/common';
+import { CommonModule, ExceptionFilter } from '@app/common';
 import { JwtModule } from '@app/jwt';
 import { AuthController } from './auth/auth.controller';
 import { ChatGateway } from './chat/chat.gateway';
@@ -18,6 +19,25 @@ import { UserController } from './user/user.controller';
     UserController,
   ],
   providers: [
+    ChatGateway,
+    {
+      provide: APP_PIPE,
+      useFactory() {
+        return new ValidationPipe({
+          exceptionFactory(data) {
+            return new BadRequestException(data);
+          },
+          validationError: {
+            value: false,
+            target: false,
+          },
+        });
+      },
+    },
+    {
+      provide: APP_FILTER,
+      useClass: ExceptionFilter,
+    },
     {
       provide: 'AUTH_SERVICE',
       inject: [ConfigService],
@@ -87,7 +107,6 @@ import { UserController } from './user/user.controller';
         });
       },
     },
-    ChatGateway,
   ],
 })
 export class GatewayModule {}

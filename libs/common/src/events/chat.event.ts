@@ -11,4 +11,5 @@ export enum ChatEvent {
 export enum ChatSocketEvent {
   SEND_MESSAGE = 'chat.message.send',
   RECEIVE_MESSAGE = 'chat.message.receive',
+  RECEIVE_ERROR = 'chat.error.receive',
 }
