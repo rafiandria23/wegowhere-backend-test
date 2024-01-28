@@ -48,7 +48,7 @@ Where `$SVC` is service name of `gateway`, `user`, `auth`, and `chat`.
 
 ## Deployment
 
-You can user Docker Compose, Docker Swarm, or Kubernetes. Note that reverse proxy has to point to `gateway` service.
+Use Terraform files defined in [here](terraform/) to deploy on AWS only. Note that reverse proxy has to point to `gateway` service.
 
 ## Usage
 
