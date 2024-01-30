@@ -46,7 +46,7 @@
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "mongoose": "^8.1.0",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "tipe-apa": "^0.4.7"
   },
