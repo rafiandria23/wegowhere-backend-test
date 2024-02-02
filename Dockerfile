@@ -7,10 +7,10 @@ ARG SVC
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/svc
-COPY ./package.json ./package-lock.json ./
-RUN npm ci
+COPY ./package.json ./yarn.lock ./
+RUN yarn --frozen-lockfile
 COPY ./ ./
-RUN npm run build ${SVC}
+RUN yarn build ${SVC}
 
 # Production
 FROM base AS production
@@ -18,8 +18,8 @@ ARG SVC
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/svc
-COPY ./package.json ./package-lock.json ./
-RUN npm ci --production
+COPY ./package.json ./yarn.lock ./
+RUN yarn --production
 COPY --from=development /usr/src/svc/dist ./dist
 
 # Main File

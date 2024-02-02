@@ -25,13 +25,13 @@ Environment variables are available in `.env.template` file.
 ## Installation
 
 ```zsh
-npm i
+yarn
 ```
 
 ## Development
 
 ```zsh
-npm run start:dev $SVC
+yarn start:dev $SVC
 ```
 
 Where `$SVC` is service name of `gateway`, `user`, `auth`, and `chat`.
