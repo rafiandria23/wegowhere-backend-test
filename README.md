@@ -1,5 +1,18 @@
 # WeGoWhere Backend Test
 
+[![GitHub Actions Build](https://github.com/rafiandria23/wegowhere-backend-test/actions/workflows/ci.yaml/badge.svg)](https://github.com/rafiandria23/wegowhere-backend-test/actions/workflows/ci.yaml)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=coverage)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
+
 Backend Test for WeGoWhere. Chat API that emphasizes on real-time communication and message delivery.
 
 ## Tech Stacks
