@@ -13,7 +13,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rafiandria23_wegowhere-backend-test&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rafiandria23_wegowhere-backend-test)
 
-Backend Test for WeGoWhere. Chat API that emphasizes on real-time communication and message delivery.
+Backend test for WeGoWhere. Chat API that emphasizes on real-time communication and message delivery.
 
 ## Tech Stacks
 
