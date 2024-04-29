@@ -2001,13 +2001,23 @@ bytes@3.1.2:
   integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
 
 cache-manager-ioredis-yet@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/cache-manager-ioredis-yet/-/cache-manager-ioredis-yet-2.0.3.tgz#1b05383bd63254258145ffc7601be14e9e1dfb1a"
-  integrity sha512-KzNMpQ4uH2zMhN695upVZS7dymQA5WIrYvzcWiU3HbQwfbDo+bzLTUyd5Zou0bO6zgbMLbbzBq0/nUfogIblpQ==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/cache-manager-ioredis-yet/-/cache-manager-ioredis-yet-2.0.4.tgz#c79557f45cb6465719bdd15b6ee866acca73c18b"
+  integrity sha512-IYg0/QjaQ7G9NObopYCmJ9mytkUOw995/lyxraY9UlqLL5zR+7SdbJdUDF3cFip2H/aPM6UEtJ+j180sMF5OAw==
   dependencies:
-    cache-manager "^5.4.0"
-    ioredis "^5.3.2"
+    cache-manager "*"
+    ioredis "^5.4.1"
     telejson "^7.2.0"
+
+cache-manager@*:
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-5.5.2.tgz#011f5e8ac9706291f1b1e326ac8bb3e81565965b"
+  integrity sha512-HozSRPCBB26O1ZVIzX8GjauYMoZOpWcArqRIFlPKr+Mm3o+p/6VcHxRt8ia0F/tMwZdKxpHG0M+Am5Qh9FmfKw==
+  dependencies:
+    eventemitter3 "^5.0.1"
+    lodash.clonedeep "^4.5.0"
+    lru-cache "^10.2.2"
+    promise-coalesce "^1.1.2"
 
 cache-manager@^5.4.0:
   version "5.5.2"
@@ -3450,10 +3460,10 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-ioredis@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.3.2.tgz#9139f596f62fc9c72d873353ac5395bcf05709f7"
-  integrity sha512-1DKMMzlIHM02eBBVOFQ1+AolGjs6+xEcM4PDL7NqOS6szq7H9jSaEkIUH6/a5Hl241LzW6JLSiAbNvTQjUupUA==
+ioredis@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.4.1.tgz#1c56b70b759f01465913887375ed809134296f40"
+  integrity sha512-2YZsvl7jopIa1gaePkeMtd9rAcSjOOjPtpcLlOeusyO+XH2SK5ZcT+UCrElPP+WVIInh2TzeI4XW9ENaSLVVHA==
   dependencies:
     "@ioredis/commands" "^1.1.1"
     cluster-key-slot "^1.1.0"
