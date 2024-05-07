@@ -33,7 +33,7 @@ Backend test for WeGoWhere. Chat API that emphasizes on real-time communication 
 
 ## Environment
 
-Environment variables are available in `.env.template` file.
+Environment variables are available in `.env.example` file.
 
 ## Installation
 
