@@ -2003,9 +2003,9 @@ bytes@3.1.2:
   integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
 
 cache-manager-ioredis-yet@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/cache-manager-ioredis-yet/-/cache-manager-ioredis-yet-2.0.4.tgz#c79557f45cb6465719bdd15b6ee866acca73c18b"
-  integrity sha512-IYg0/QjaQ7G9NObopYCmJ9mytkUOw995/lyxraY9UlqLL5zR+7SdbJdUDF3cFip2H/aPM6UEtJ+j180sMF5OAw==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/cache-manager-ioredis-yet/-/cache-manager-ioredis-yet-2.1.0.tgz#21ac1a9f71e7c58c05cd65f40a952e142de97928"
+  integrity sha512-jTatM/HBYvYByjxd/GhwWCF3EqaVCSlrRSWbIXIbg9pLtewBff+19EnkZOsgmePAHDEgHDfOXsO+QcKd/mBr2g==
   dependencies:
     cache-manager "*"
     ioredis "^5.4.1"
