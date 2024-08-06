@@ -2076,9 +2076,9 @@ cache-manager-ioredis-yet@^2.0.0:
     telejson "^7.2.0"
 
 cache-manager@*, cache-manager@^5.4.0:
-  version "5.7.5"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-5.7.5.tgz#b06a1b2c27578d8c375768a107c5cbbc6ce2554e"
-  integrity sha512-mBMVq5rw33a7ZdxrpDEo0BY9W7UTmbD+t2jgkofuLDqssGG+kUVaKugq2WQiINZWxMJJ9LAXtJIYLtdEThmqQw==
+  version "5.7.6"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-5.7.6.tgz#bdd8a154c73e5233824aa09ceb359ed225d37b7e"
+  integrity sha512-wBxnBHjDxF1RXpHCBD6HGvKER003Ts7IIm0CHpggliHzN1RZditb7rXoduE1rplc2DEFYKxhLKgFuchXMJje9w==
   dependencies:
     eventemitter3 "^5.0.1"
     lodash.clonedeep "^4.5.0"
