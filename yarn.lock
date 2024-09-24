@@ -2057,9 +2057,9 @@ cache-manager-ioredis-yet@^2.0.0:
     telejson "^7.2.0"
 
 cache-manager@*, cache-manager@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.0.0.tgz#b11cf42fcbc4ca9fa20f44b7cedee0e2846445d3"
-  integrity sha512-X1sN/GF0FjJo4mDlNr+Ha2IHIjJbEwzrTA0eBbJA08P1x5cOZVva1Hdi2wyLDwJScekvGUPRw4R9OvvPsLZrJA==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.0.1.tgz#596f0a7ee6845d78e104ce4b40b24f56450e2aa8"
+  integrity sha512-Ojs30wL2AwJKj4We9YzSi6hNqbsf9fjne0Qe3hmetn4Vv7fdJSAEnRMaxjvfS/316S/5n9hhJ7vkw65e+wgS/A==
   dependencies:
     keyv "^5.0.3"
 
