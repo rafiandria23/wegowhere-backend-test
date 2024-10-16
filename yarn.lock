@@ -2086,11 +2086,11 @@ cache-manager-ioredis-yet@^2.0.0:
     telejson "^7.2.0"
 
 cache-manager@*, cache-manager@^6.0.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.1.0.tgz#e1d60430b358decc8b6df2ce6cdc3013303740e4"
-  integrity sha512-Z0gN4aTrCPNxWnXJqdTM+fAFbjYV1al9PNb3bShtw8CeNuaDloYm184f4wPNodPzTBznT3F2sqzTpwlGcL2Hjg==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.1.1.tgz#2ea0a567a43102364bacc7aaabce4887e3344df7"
+  integrity sha512-Gvj+GMPYJwYWZKvvk2Ssrd+HXjfVycQwblLfU9ezqAS2AJiesB2wqu6q/vQIouSZuGvfra4J85aO9RhQeMpVWQ==
   dependencies:
-    keyv "^5.0.3"
+    keyv "^5.1.0"
 
 call-bind@^1.0.7:
   version "1.0.7"
@@ -4198,10 +4198,10 @@ keyv@^4.5.4:
   dependencies:
     json-buffer "3.0.1"
 
-keyv@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/keyv/-/keyv-5.0.3.tgz#f0a5a3b3bf41ee4a15a1c481140c0f1e26e6af3f"
-  integrity sha512-WmefGWaWkWiWDkIasfHxpWmM1lych/LPtRmNj8jnIQVGLsAgFw73Vg9utZ7ss97/JwRlERABb/fSejTPY4hlZQ==
+keyv@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/keyv/-/keyv-5.1.0.tgz#b371f54dff428e1a1bfe71328578266ebb62c470"
+  integrity sha512-FUr1fbKVsj9IZkPkY9reJ80Lp2B3ldtFXH+xK0wvZYzOpwgHV1er3xP4JUhu2cgkV2X3BJQw+hzAbIGqa+hNIA==
   dependencies:
     "@keyv/serialize" "*"
 
