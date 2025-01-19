@@ -939,10 +939,10 @@
   dependencies:
     sparse-bitfield "^3.0.3"
 
-"@nestjs/cache-manager@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/cache-manager/-/cache-manager-2.3.0.tgz#e318ba56856c89b34f158efe9ca749fe3886dfa9"
-  integrity sha512-pxeBp9w/s99HaW2+pezM1P3fLiWmUEnTUoUMLa9UYViCtjj0E0A19W/vaT5JFACCzFIeNrwH4/16jkpAhQ25Vw==
+"@nestjs/cache-manager@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/cache-manager/-/cache-manager-3.0.0.tgz#7d2c7aeee4733a7669333f66500417c0f74d1391"
+  integrity sha512-csKvxHSQWfC0OiDo0bNEhLqrmYDopHEvRyC81MxV9xFj1AO+rOKocpHa4M1ZGH//6uKFIPGN9oiR0mvZY77APA==
 
 "@nestjs/cli@^10.0.0":
   version "10.4.9"
