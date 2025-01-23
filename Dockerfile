@@ -1,5 +1,5 @@
 # Base
-FROM node:22-alpine AS base
+FROM node:lts-alpine AS base
 
 # Development
 FROM base AS development
