@@ -1121,9 +1121,9 @@
     webpack-node-externals "3.0.0"
 
 "@nestjs/common@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-11.0.4.tgz#c5619e3be9f5a9dfe9e3453ca5f5b15576917b27"
-  integrity sha512-KVNOFe445VZeoegSPWmAytDO/VwvrKfUNjS3IivMYsUaM0F54r/C5oyvBF3rmQlTeEsIUfpaHEr+zFkYnt3ZKA==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-11.0.5.tgz#5de2ee2062c3098ddb42e42e7ad976cae6945201"
+  integrity sha512-wKvdqC1s0A3VguR97DDpnnjQhi8p+9FmMVWFQCZYzoURXXFgsyuZZiUi7VjfyM/ewG4IV2vPUXdmkry+KXYh0A==
   dependencies:
     uid "2.0.2"
     iterare "1.2.1"
@@ -1139,9 +1139,9 @@
     lodash "4.17.21"
 
 "@nestjs/core@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-11.0.4.tgz#297c29a73684c8b1faac92687e0fe081b1adb473"
-  integrity sha512-kDhafpOQw5isbw4yQ/F/wb2wIi3VqepntBHdyLc8Wgbg/JMZ1VCjekSM0e98wkZpguZgTG1jXLYZutqF/H4hqg==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-11.0.5.tgz#0716db5f1711b7ca75fe10cebeb7cc97f4f2b472"
+  integrity sha512-6cYkndsBV2GrPuHecBFg4neE2P87PmlhumSwfHonn78aI6NyMlWfA+HCJr5Y+7uy6CiTLwJCNiqLhiM/TZjjeA==
   dependencies:
     uid "2.0.2"
     "@nuxt/opencollective" "0.4.1"
@@ -1164,9 +1164,9 @@
   integrity sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw==
 
 "@nestjs/microservices@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/microservices/-/microservices-11.0.4.tgz#99b4effc7ea539fff4bba08aa09311f1e244c548"
-  integrity sha512-IKr/t2t8hLJJ5Xh+KTpVSoXQoAbKP5U31+LIp1FoM+jQJOndfvPIPEhm3GFcnHQUAEdm7ZyCgbj/AgvgwVJphg==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/microservices/-/microservices-11.0.5.tgz#1bb228c11bc462953b038a3bd20bc8d791d46faf"
+  integrity sha512-nO3cgXhGr02OSP9Q3/1npY/7b9ABWuBnVkhd8cJ7zpYlsYslxjtvIgCAoGtrI7rdVXi2qvysLx6AEww1FZ4mtg==
   dependencies:
     iterare "1.2.1"
     tslib "2.8.1"
@@ -1177,9 +1177,9 @@
   integrity sha512-dp0J6ZCp8tvkI9MDDLtxyMCh0HGGr6Bg+nNAsT0TpeiHVJIDAPQ5dIteA+EIoS2pm7tyNPBRyZKKv04r/BCzPA==
 
 "@nestjs/platform-express@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-11.0.4.tgz#0acfc88c42f1078cdeaecf5ca580f5a1260bfa33"
-  integrity sha512-HqdTJZViPXNrJGp5b4TdTAmCoHk5UdR67FDEYph8cw+FNhdSbvkXcXErpLN3Hh3/WzLrvKDaWQ2gDZS35vKbmw==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-11.0.5.tgz#765b269991b2b0cb5b3b7c8257450625421c380d"
+  integrity sha512-nG/doauKHuy27Y/3pUKfQFC+mB8ezPayZ/4hTDaysITsOVLBrd7xtS0DW68kSufXnLhIkPgAfB9Ddhm/NHux4g==
   dependencies:
     cors "2.8.5"
     express "5.0.1"
@@ -1188,9 +1188,9 @@
     tslib "2.8.1"
 
 "@nestjs/platform-fastify@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-11.0.4.tgz#b7dd4747f42db1fbc150aef866a5ee55b26cd30f"
-  integrity sha512-U41ulZYF+VgzGtxbS28vBriAZYVDw/zKJl0FA0PMl9s7TqMvwEzBioBFIlMjRYcwwqSfuM6z+MiQ5znk06B/fg==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-fastify/-/platform-fastify-11.0.5.tgz#07bb7d8bea7f205bdc6e21fb01fafa90a2d9cf45"
+  integrity sha512-2bVBvklXlalAoEnU1xg76SuPZPrB5foMlajXdhw9+ovdl+apinnLKvLG8qZFFwZMAHzlqi3dk4aHLrI+OOSDcA==
   dependencies:
     "@fastify/cors" "10.0.2"
     "@fastify/formbody" "8.0.2"
@@ -1201,9 +1201,9 @@
     tslib "2.8.1"
 
 "@nestjs/platform-socket.io@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-11.0.4.tgz#2e616c066d61aefd22bccea2ddb5213bddc5136d"
-  integrity sha512-XmmC2OK39qZFzw5JHx9QDcCSf5vPM0481NdTxgiYauPWzQuUIGAC2gC5rqJt4GVhGmjsn5Luj3ULmMYKkRTfCQ==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-11.0.5.tgz#65355fe8404ff572664df8a13fd5e3954f5f627d"
+  integrity sha512-YDvTsb4GT4PY3Et4Q+NMjAYs9iq0YR+H6JwUtlhNPvYAQHET6kN22/KwXUS5OZBxIolf5CJEjfkiUx3BS8o//Q==
   dependencies:
     socket.io "4.8.1"
     tslib "2.8.1"
@@ -1232,16 +1232,16 @@
     swagger-ui-dist "5.18.2"
 
 "@nestjs/testing@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-11.0.4.tgz#cfd90d20c96e64636cd81b645502cd3f62cb2475"
-  integrity sha512-+ksQXkpaaKJLGeSNBeI2EkXakmfr5mGE2jrdCq3eihVuuNuFJHO1PMgzwyiNcMmrDb1H5o/XLva0Inj5VbE9aA==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-11.0.5.tgz#ff1a0fc43fd3269b6ee3b951e962b547ad2395e9"
+  integrity sha512-izV7r7ea/UgOmDFffQ3zJjqO/lGTs2IPgLesIK2zg7A08WtDj/mRruG1RRuhTXzOphDl6oc3lhey/GuIuRsyIA==
   dependencies:
     tslib "2.8.1"
 
 "@nestjs/websockets@^11.0.0":
-  version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-11.0.4.tgz#f8806e3f9f066802a6ad51cd9e4838198d025548"
-  integrity sha512-QOsfzJ2/cvNOQgmU/2yIIeqfti7y5eORqwEPtJLtnrHhtaesecPGAsLphrDsgxSPjTl43hjOpK7iuGqcgX1adg==
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-11.0.5.tgz#53bd271bcd48fffadddb0523e2bd8916567980ba"
+  integrity sha512-e6iyUoEAzRIu0Cq7XM+dbUVhEf+44KN3jqscPlFy/mQrweGwuzVejYP/Nqc75FkAbFw2JXyIA+6vE+/LuP/Fjg==
   dependencies:
     iterare "1.2.1"
     object-hash "3.0.0"
@@ -1383,11 +1383,6 @@
   integrity sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==
   dependencies:
     "@types/node" "*"
-
-"@types/cookie@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
-  integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
 
 "@types/cookiejar@^2.1.5":
   version "2.1.5"
@@ -2602,15 +2597,10 @@ cookie@0.7.1:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.7.1.tgz#2f73c42142d5d5cf71310a74fc4ae61670e5dbc9"
   integrity sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==
 
-cookie@^1.0.1:
+cookie@^1.0.1, cookie@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-1.0.2.tgz#27360701532116bd3f1f9416929d176afe1e4610"
   integrity sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==
-
-cookie@~0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.7.2.tgz#556369c472a2ba910f2979891b526b3436237ed7"
-  integrity sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==
 
 cookiejar@^2.1.4:
   version "2.1.4"
@@ -2898,16 +2888,15 @@ engine.io-parser@~5.2.1:
   integrity sha512-HqD3yTBfnBxIrbnM1DoD6Pcq8NECnh8d4As1Qgh0z5Gg3jRRIqijury0CL3ghu/edArpUYiYqQiDUQBIs4np3Q==
 
 engine.io@~6.6.0:
-  version "6.6.2"
-  resolved "https://registry.yarnpkg.com/engine.io/-/engine.io-6.6.2.tgz#32bd845b4db708f8c774a4edef4e5c8a98b3da72"
-  integrity sha512-gmNvsYi9C8iErnZdVcJnvCpSKbWTt1E8+JZo8b+daLninywUWi5NQ5STSHZ9rFjFO7imNcvb8Pc5pe/wMR5xEw==
+  version "6.6.3"
+  resolved "https://registry.yarnpkg.com/engine.io/-/engine.io-6.6.3.tgz#a2ec69f72bf17c709ed832868bf17eb1a80a6470"
+  integrity sha512-2hkLItQMBkoYSagneiisupWGvsQlWXqzhSMvsjaM8GYbnfUsX7tzYQq9QARnate5LRedVTX+MbkSZAANAr3NtQ==
   dependencies:
-    "@types/cookie" "^0.4.1"
     "@types/cors" "^2.8.12"
     "@types/node" ">=10.0.0"
     accepts "~1.3.4"
     base64id "2.0.0"
-    cookie "~0.7.2"
+    cookie "~1.0.2"
     cors "~2.8.5"
     debug "~4.3.1"
     engine.io-parser "~5.2.1"
