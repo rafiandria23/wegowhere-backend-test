@@ -26,30 +26,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-devkit/core@npm:19.0.1":
-  version: 19.0.1
-  resolution: "@angular-devkit/core@npm:19.0.1"
-  dependencies:
-    ajv: "npm:8.17.1"
-    ajv-formats: "npm:3.0.1"
-    jsonc-parser: "npm:3.3.1"
-    picomatch: "npm:4.0.2"
-    rxjs: "npm:7.8.1"
-    source-map: "npm:0.7.4"
-  peerDependencies:
-    chokidar: ^4.0.0
-  dependenciesMeta:
-    esbuild:
-      built: true
-    puppeteer:
-      built: true
-  peerDependenciesMeta:
-    chokidar:
-      optional: true
-  checksum: 10c0/de2e614d2a67eb5c59e38faeadfd95e0aded79add758a503f9692e7bb6940c785599282318ba76da2e27cd261c45e73e531b3d33e5224b764bc99d5aaf22aa89
-  languageName: node
-  linkType: hard
-
 "@angular-devkit/core@npm:19.1.7":
   version: 19.1.7
   resolution: "@angular-devkit/core@npm:19.1.7"
@@ -82,24 +58,6 @@ __metadata:
   bin:
     schematics: bin/schematics.js
   checksum: 10c0/f39017e32a82de8017c8f24aea118d8a61b45cfe5852363fa274b9d07caac4b5c143fc73b4ae15ec2b7c987090ac10ebc1e79888ceac419ef46362b6ddef988f
-  languageName: node
-  linkType: hard
-
-"@angular-devkit/schematics@npm:19.0.1":
-  version: 19.0.1
-  resolution: "@angular-devkit/schematics@npm:19.0.1"
-  dependencies:
-    "@angular-devkit/core": "npm:19.0.1"
-    jsonc-parser: "npm:3.3.1"
-    magic-string: "npm:0.30.12"
-    ora: "npm:5.4.1"
-    rxjs: "npm:7.8.1"
-  dependenciesMeta:
-    esbuild:
-      built: true
-    puppeteer:
-      built: true
-  checksum: 10c0/90546adfee523b14c38f88a9c668679fe3d0548ab1bb660b3e3a4033eb936ac4a8ed574b9d98be3a8b3b00b2fd4c6f1a6e7c29910d52866d6666467925e10a1a
   languageName: node
   linkType: hard
 
@@ -1569,14 +1527,14 @@ __metadata:
   linkType: hard
 
 "@nestjs/cli@npm:^11.0.0":
-  version: 11.0.3
-  resolution: "@nestjs/cli@npm:11.0.3"
+  version: 11.0.4
+  resolution: "@nestjs/cli@npm:11.0.4"
   dependencies:
     "@angular-devkit/core": "npm:19.1.7"
     "@angular-devkit/schematics": "npm:19.1.7"
     "@angular-devkit/schematics-cli": "npm:19.1.7"
     "@inquirer/prompts": "npm:7.3.2"
-    "@nestjs/schematics": "npm:11.0.0"
+    "@nestjs/schematics": "npm:^11.0.1"
     ansis: "npm:3.15.0"
     chokidar: "npm:4.0.3"
     cli-table3: "npm:0.6.5"
@@ -1601,7 +1559,7 @@ __metadata:
       optional: true
   bin:
     nest: bin/nest.js
-  checksum: 10c0/72e42be5fc70693b653797c45f7bccc3cebe9714fe2ba6b8e0a9488407479c4a00eb3b7e71671c8d5a6fc9d43b8afdc472c9821bdbc5fabf2809e265e910d807
+  checksum: 10c0/cc72eb6fc234164fd65fd6f4c46595a55f8c27982cc5fe7e6be59084faba296439abd94fee646225f403f78258febd4a6e7a1b716e9b856bf2a1321b39b062f1
   languageName: node
   linkType: hard
 
@@ -1807,22 +1765,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/schematics@npm:11.0.0":
-  version: 11.0.0
-  resolution: "@nestjs/schematics@npm:11.0.0"
-  dependencies:
-    "@angular-devkit/core": "npm:19.0.1"
-    "@angular-devkit/schematics": "npm:19.0.1"
-    comment-json: "npm:4.2.5"
-    jsonc-parser: "npm:3.3.1"
-    pluralize: "npm:8.0.0"
-  peerDependencies:
-    typescript: ">=4.8.2"
-  checksum: 10c0/64d93d97d1653cc62c6aee1f611e478731c8dd1097678a5ccf596f37f3d9783739deb64e6fd78c45ad8307199185dabe4c0d55fa12c447cc115fccf6b2ffa9f5
-  languageName: node
-  linkType: hard
-
-"@nestjs/schematics@npm:^11.0.0":
+"@nestjs/schematics@npm:^11.0.0, @nestjs/schematics@npm:^11.0.1":
   version: 11.0.1
   resolution: "@nestjs/schematics@npm:11.0.1"
   dependencies:
@@ -6357,15 +6300,6 @@ __metadata:
   dependencies:
     yallist: "npm:^3.0.2"
   checksum: 10c0/89b2ef2ef45f543011e38737b8a8622a2f8998cddf0e5437174ef8f1f70a8b9d14a918ab3e232cb3ba343b7abddffa667f0b59075b2b80e6b4d63c3de6127482
-  languageName: node
-  linkType: hard
-
-"magic-string@npm:0.30.12":
-  version: 0.30.12
-  resolution: "magic-string@npm:0.30.12"
-  dependencies:
-    "@jridgewell/sourcemap-codec": "npm:^1.5.0"
-  checksum: 10c0/469f457d18af37dfcca8617086ea8a65bcd8b60ba8a1182cb024ce43e470ace3c9d1cb6bee58d3b311768fb16bc27bd50bdeebcaa63dadd0fd46cac4d2e11d5f
   languageName: node
   linkType: hard
 
