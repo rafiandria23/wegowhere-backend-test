@@ -1722,14 +1722,14 @@ __metadata:
   linkType: hard
 
 "@nestjs/mongoose@npm:^11.0.0":
-  version: 11.0.1
-  resolution: "@nestjs/mongoose@npm:11.0.1"
+  version: 11.0.2
+  resolution: "@nestjs/mongoose@npm:11.0.2"
   peerDependencies:
     "@nestjs/common": ^10.0.0 || ^11.0.0
     "@nestjs/core": ^10.0.0 || ^11.0.0
     mongoose: ^7.0.0 || ^8.0.0
     rxjs: ^7.0.0
-  checksum: 10c0/62d01ce5b085c27d12402b61bf27d4bbbf365cf46240eef2d2fc5ba02da57a79c066aa590901502a1e9badc3b41d096116d7ad38c8e4dbf879f0808a76152271
+  checksum: 10c0/358a0a5b83aca1d2dc8ef3a572d9cb868234093fef316fac474d516187fe448c0ac638be274ab003b6004435dd51a9c1f484415820931430b815cdfac4259a79
   languageName: node
   linkType: hard
 
