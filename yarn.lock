@@ -1545,14 +1545,15 @@ __metadata:
   linkType: hard
 
 "@nestjs/cache-manager@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@nestjs/cache-manager@npm:3.0.0"
+  version: 3.0.1
+  resolution: "@nestjs/cache-manager@npm:3.0.1"
   peerDependencies:
     "@nestjs/common": ^9.0.0 || ^10.0.0 || ^11.0.0
     "@nestjs/core": ^9.0.0 || ^10.0.0 || ^11.0.0
     cache-manager: ">=6"
+    keyv: ">=5"
     rxjs: ^7.8.1
-  checksum: 10c0/9249d693d29f755591f9bc8d5b84c11c9ee80f9676fe5ffe6c8c255fbccb893f14bc7dde12edd872d545eda8e21c31c4ad16a031ac1cb6c6729c000625505c82
+  checksum: 10c0/a28bf4a24195f648ccb0dc88a46056003665ff4fdc60454b17f0b9a15fcaa8cb5c1a4fdb49a7bd6b2371ce56382698116c4dfc88c7dd09527b833588582af46a
   languageName: node
   linkType: hard
 
