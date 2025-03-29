@@ -5,17 +5,6 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@acuminous/bitsyntax@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@acuminous/bitsyntax@npm:0.1.2"
-  dependencies:
-    buffer-more-ints: "npm:~1.0.0"
-    debug: "npm:^4.3.4"
-    safe-buffer: "npm:~5.1.2"
-  checksum: 10c0/bb54b5a1cf33bd67c317febfa2e4e89be803e7fc6ffae91c675ecc97aee144edf1ca15779b8b2413f44545b47db3340120891efb86e4e23a98f8bfab08c123bf
-  languageName: node
-  linkType: hard
-
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.3.0
   resolution: "@ampproject/remapping@npm:2.3.0"
@@ -2857,13 +2846,12 @@ __metadata:
   linkType: hard
 
 "amqplib@npm:^0.10.3":
-  version: 0.10.5
-  resolution: "amqplib@npm:0.10.5"
+  version: 0.10.7
+  resolution: "amqplib@npm:0.10.7"
   dependencies:
-    "@acuminous/bitsyntax": "npm:^0.1.2"
     buffer-more-ints: "npm:~1.0.0"
     url-parse: "npm:~1.5.10"
-  checksum: 10c0/8037acb73d5106770005d6217ab50c00c1424c87d2b21311024b2028be462b023db9554f6ff1021d2871501b1b817bb33599929f17fe22fed327cb39ee6d58b4
+  checksum: 10c0/686d92fbd81d13b7745ada633c7e244cfdf29a8eb3f22389612185f90741a7a26b81a437a0f61c3364b81ec88c93a8a48613cbf73a330e56434fcf4ee320256c
   languageName: node
   linkType: hard
 
@@ -7764,7 +7752,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1, safe-buffer@npm:~5.1.2":
+"safe-buffer@npm:~5.1.0, safe-buffer@npm:~5.1.1":
   version: 5.1.2
   resolution: "safe-buffer@npm:5.1.2"
   checksum: 10c0/780ba6b5d99cc9a40f7b951d47152297d0e260f0df01472a1b99d4889679a4b94a13d644f7dbc4f022572f09ae9005fa2fbb93bbbd83643316f365a3e9a45b21
