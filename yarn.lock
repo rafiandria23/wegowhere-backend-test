@@ -1795,8 +1795,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/schematics@npm:^11.0.0, @nestjs/schematics@npm:^11.0.1":
-  version: 11.0.3
-  resolution: "@nestjs/schematics@npm:11.0.3"
+  version: 11.0.4
+  resolution: "@nestjs/schematics@npm:11.0.4"
   dependencies:
     "@angular-devkit/core": "npm:19.2.6"
     "@angular-devkit/schematics": "npm:19.2.6"
@@ -1805,7 +1805,7 @@ __metadata:
     pluralize: "npm:8.0.0"
   peerDependencies:
     typescript: ">=4.8.2"
-  checksum: 10c0/2cab21b7506a08ae15efa42671e83b2068cc5341da278393dd725770546373e0006daefdefd68d854567377e6b1d5285c405150eeff75d7a78c2720fc8f54c9c
+  checksum: 10c0/b4efd989c993799d9f6d5106154013b200da4666cb43b71544ddd46131ad5f2743067cb2557946e39205dd430b703a1059ef11be013db164b8665360fa6c6e5a
   languageName: node
   linkType: hard
 
