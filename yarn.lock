@@ -3374,12 +3374,12 @@ __metadata:
   linkType: hard
 
 "amqplib@npm:^0.10.3":
-  version: 0.10.8
-  resolution: "amqplib@npm:0.10.8"
+  version: 0.10.9
+  resolution: "amqplib@npm:0.10.9"
   dependencies:
     buffer-more-ints: "npm:~1.0.0"
     url-parse: "npm:~1.5.10"
-  checksum: 10c0/817f8efd55148ce5c40adeea5ee79024c5e9caf4016eb3aecad3e2d5e1b57380697e5a514f5ad241779953b7e288ea230d4841ece18c2d4fff78333470279c09
+  checksum: 10c0/d241efba1e38cf158c36a0fe40fc1c5424f3abf1a2d2e7d4494cb308e1800bd42ddba02cc119b47a7f4f37ef1874dfa5a9dca294e5d84443727228244e62af62
   languageName: node
   linkType: hard
 
