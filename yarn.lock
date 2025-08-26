@@ -3805,11 +3805,11 @@ __metadata:
   linkType: hard
 
 "cache-manager@npm:*, cache-manager@npm:^7.0.0":
-  version: 7.1.1
-  resolution: "cache-manager@npm:7.1.1"
+  version: 7.2.0
+  resolution: "cache-manager@npm:7.2.0"
   dependencies:
     keyv: "npm:^5.5.0"
-  checksum: 10c0/2abb52b9c827e642ddeaa512530048be5523f978e1b7326ece3e25e2e01c362c2c332ff72878eb06daf71bd5598e87f9400b5c6dfdfc313d967dd098d1392bea
+  checksum: 10c0/c256ee7b3acee6c981ae472f094b50ecb6277f96a079ff8f65c07568d8849a59908e555c683b5535d6eefea4c92bb0152001aeca6b129d6de4931829b6625684
   languageName: node
   linkType: hard
 
