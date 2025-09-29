@@ -3370,13 +3370,13 @@ __metadata:
   linkType: hard
 
 "amqp-connection-manager@npm:^4.1.14":
-  version: 4.1.14
-  resolution: "amqp-connection-manager@npm:4.1.14"
+  version: 4.1.15
+  resolution: "amqp-connection-manager@npm:4.1.15"
   dependencies:
     promise-breaker: "npm:^6.0.0"
   peerDependencies:
     amqplib: "*"
-  checksum: 10c0/09b9638d88fe63cbbd001407a1f5280572426d96cbdbe66fe1d43a2d0ea60705d77b69da45fed2807fa3aa1f0c65a6d51ed43f3fd363ff9ad1338a3d35b94f9b
+  checksum: 10c0/f7cfd0f377194935f3dd61ac8a550b593aa92fd70807be534c45738564917642e0cc8ce147c1e31f9ea78a4fc827bcf7562e3ecc52b7a4906e6e0402c0655007
   languageName: node
   linkType: hard
 
