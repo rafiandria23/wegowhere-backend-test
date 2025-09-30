@@ -2317,7 +2317,7 @@ __metadata:
     "@types/supertest": "npm:^6.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
-    amqp-connection-manager: "npm:^4.1.14"
+    amqp-connection-manager: "npm:^5.0.0"
     amqplib: "npm:^0.10.3"
     bcrypt: "npm:^6.0.0"
     cache-manager: "npm:^7.0.0"
@@ -3369,14 +3369,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"amqp-connection-manager@npm:^4.1.14":
-  version: 4.1.15
-  resolution: "amqp-connection-manager@npm:4.1.15"
+"amqp-connection-manager@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "amqp-connection-manager@npm:5.0.0"
   dependencies:
     promise-breaker: "npm:^6.0.0"
   peerDependencies:
     amqplib: "*"
-  checksum: 10c0/f7cfd0f377194935f3dd61ac8a550b593aa92fd70807be534c45738564917642e0cc8ce147c1e31f9ea78a4fc827bcf7562e3ecc52b7a4906e6e0402c0655007
+  checksum: 10c0/5dfbbe07c5f58dad96bbeb4a8cbf8d6736672d5e2d82630dee0fecd9d1e437fea8a07f893ed71b88ef1777f833d63d26dc4daf4ac4604367bcc6167fac971f77
   languageName: node
   linkType: hard
 
