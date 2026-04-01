@@ -9017,8 +9017,8 @@ __metadata:
   linkType: hard
 
 "ts-jest@npm:^29.1.0":
-  version: 29.4.7
-  resolution: "ts-jest@npm:29.4.7"
+  version: 29.4.9
+  resolution: "ts-jest@npm:29.4.9"
   dependencies:
     bs-logger: "npm:^0.2.6"
     fast-json-stable-stringify: "npm:^2.1.0"
@@ -9052,7 +9052,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: 10c0/48bee871111662094139649477006b480cc7120a9f7a8a8ac7277dd9ea501683a28008e8a2cd3ff8ba8776dcdda1ab18abfcf9c73cc775ef6ed586ad53685c34
+  checksum: 10c0/901eb382817d1f48fc56b6c9b82de989f176660295695ae1fcd55f06f71d2c107766e1413ab24a59fa964c2ef79a60dd23ac1f382b05ae04f2b454fb4eb5ad4f
   languageName: node
   linkType: hard
 
