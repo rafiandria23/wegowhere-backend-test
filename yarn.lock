@@ -2050,8 +2050,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/microservices@npm:^11.0.0":
-  version: 11.1.17
-  resolution: "@nestjs/microservices@npm:11.1.17"
+  version: 11.1.18
+  resolution: "@nestjs/microservices@npm:11.1.18"
   dependencies:
     iterare: "npm:1.2.1"
     tslib: "npm:2.8.1"
@@ -2088,7 +2088,7 @@ __metadata:
       optional: true
     nats:
       optional: true
-  checksum: 10c0/87cc264171254f049b849fbce5fed0a871586f3c610172564fa51c27d304502fda9213a933c4e5f5c2c139754f267e1d9b2fc607e19998fa7d785567d25aaf41
+  checksum: 10c0/e1ebf4297724603d083850573bb1cb6cb70dd9f58657e93941254681ab6b7a47d940e564d287005a3a5b1fd6852961bf583fcc008524d05cb96460ee046a3e65
   languageName: node
   linkType: hard
 
@@ -2121,17 +2121,17 @@ __metadata:
   linkType: hard
 
 "@nestjs/platform-fastify@npm:^11.0.0":
-  version: 11.1.17
-  resolution: "@nestjs/platform-fastify@npm:11.1.17"
+  version: 11.1.18
+  resolution: "@nestjs/platform-fastify@npm:11.1.18"
   dependencies:
     "@fastify/cors": "npm:11.2.0"
     "@fastify/formbody": "npm:8.0.2"
     fast-querystring: "npm:1.1.2"
-    fastify: "npm:5.8.2"
+    fastify: "npm:5.8.4"
     fastify-plugin: "npm:5.1.0"
     find-my-way: "npm:9.5.0"
     light-my-request: "npm:6.6.0"
-    path-to-regexp: "npm:8.3.0"
+    path-to-regexp: "npm:8.4.2"
     reusify: "npm:1.1.0"
     tslib: "npm:2.8.1"
   peerDependencies:
@@ -2144,13 +2144,13 @@ __metadata:
       optional: true
     "@fastify/view":
       optional: true
-  checksum: 10c0/12aa976a96c7e49190989bf0a3def0a3fb2b7763aa54de79e6f4bf8eeed693330bf508b95632df5d1a4ab5a75757fc7ada459d6fd907e4fd499813f9f70a50ef
+  checksum: 10c0/131ead8a78e17d82b8a0764da408ae0649e892251e18923b7dfd68a0c9609a22d18526f21fd31602288548a1f066d239a56f86d09a13b40f59179f655d7f69cf
   languageName: node
   linkType: hard
 
 "@nestjs/platform-socket.io@npm:^11.0.0":
-  version: 11.1.17
-  resolution: "@nestjs/platform-socket.io@npm:11.1.17"
+  version: 11.1.18
+  resolution: "@nestjs/platform-socket.io@npm:11.1.18"
   dependencies:
     socket.io: "npm:4.8.3"
     tslib: "npm:2.8.1"
@@ -2158,7 +2158,7 @@ __metadata:
     "@nestjs/common": ^11.0.0
     "@nestjs/websockets": ^11.0.0
     rxjs: ^7.1.0
-  checksum: 10c0/d185633dddc865e9315f4411ae177e5237bdd5638515a00ac1504f4429be5f2e3de2bca6a18b5f7351753de1c58f71552d27343ccd421bf0c67a2b2a742ca6de
+  checksum: 10c0/fe484a1ab2583228fc86c86e8f243739c081ebed75736faeecaf28c7d7ef4e6d91cf2443e62c232b7ae46ceede624641f8a62b977fe496141b0308fd30029901
   languageName: node
   linkType: hard
 
@@ -2206,8 +2206,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/testing@npm:^11.0.0":
-  version: 11.1.17
-  resolution: "@nestjs/testing@npm:11.1.17"
+  version: 11.1.18
+  resolution: "@nestjs/testing@npm:11.1.18"
   dependencies:
     tslib: "npm:2.8.1"
   peerDependencies:
@@ -2220,13 +2220,13 @@ __metadata:
       optional: true
     "@nestjs/platform-express":
       optional: true
-  checksum: 10c0/fe6408ad155c328beaff4eec2b36bcf853e7bbf2c16806f6cf64dd293fd4de1e3d1232df81bfcece12614de866c7551f728aa8474e2990ae22fe07e69dea8f21
+  checksum: 10c0/49addd548fbf8881181b4e467a713835190cb79e24cd3a9ad643d6c7b7bca1688547ce0a7dffe453d811fb85f5aad75d247d6d04bbceb36136dd3724d1e8509f
   languageName: node
   linkType: hard
 
 "@nestjs/websockets@npm:^11.0.0":
-  version: 11.1.17
-  resolution: "@nestjs/websockets@npm:11.1.17"
+  version: 11.1.18
+  resolution: "@nestjs/websockets@npm:11.1.18"
   dependencies:
     iterare: "npm:1.2.1"
     object-hash: "npm:3.0.0"
@@ -2240,7 +2240,7 @@ __metadata:
   peerDependenciesMeta:
     "@nestjs/platform-socket.io":
       optional: true
-  checksum: 10c0/c0827ebc1d8e76234ab2bd09afda7cfe233c1fcb864662f2d81bb902d85b21e4ffffa4de2ea7c6bc2d4dd1774cac8cb34b12af22f2a93522a9de6bd029b39b80
+  checksum: 10c0/4c1168170558c63220dcb7243680eb1bb1d3bd91b72dbf24862eb83613f9cda1257312afd8537077bf110a65ede7b8ae59e3d49d181f25fd24a4bf16221bf30e
   languageName: node
   linkType: hard
 
@@ -5116,9 +5116,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify@npm:5.8.2":
-  version: 5.8.2
-  resolution: "fastify@npm:5.8.2"
+"fastify@npm:5.8.4":
+  version: 5.8.4
+  resolution: "fastify@npm:5.8.4"
   dependencies:
     "@fastify/ajv-compiler": "npm:^4.0.5"
     "@fastify/error": "npm:^4.0.0"
@@ -5135,7 +5135,7 @@ __metadata:
     secure-json-parse: "npm:^4.0.0"
     semver: "npm:^7.6.0"
     toad-cache: "npm:^3.7.0"
-  checksum: 10c0/f6ee45032d8467c590b665a5d1d4c90b45c8cc51d427d29ff0c42759fa2ab88168bd9a473675bd163991bc84565e4d6ebdb8b914a6ecea5df59844fd1dfc7553
+  checksum: 10c0/560ef35d59f96d9900c6e96946736215873ed8aa7a493f61f9489c1bdbddf8f714c735886c00e21077fe9a0ea96539b8b5d6755e8877c464b0b04b6afde9c5ab
   languageName: node
   linkType: hard
 
@@ -7761,6 +7761,13 @@ __metadata:
   version: 8.3.0
   resolution: "path-to-regexp@npm:8.3.0"
   checksum: 10c0/ee1544a73a3f294a97a4c663b0ce71bbf1621d732d80c9c9ed201b3e911a86cb628ebad691b9d40f40a3742fe22011e5a059d8eed2cf63ec2cb94f6fb4efe67c
+  languageName: node
+  linkType: hard
+
+"path-to-regexp@npm:8.4.2":
+  version: 8.4.2
+  resolution: "path-to-regexp@npm:8.4.2"
+  checksum: 10c0/05b115c49b47ad252ce05faa32930f643f23769c68b8bcfe78ad833545140c48bbffb3266986d6c8d5db13a64cf12e07e0d72d9882cab830efeefa553533ebaf
   languageName: node
   linkType: hard
 
