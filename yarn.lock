@@ -2133,8 +2133,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/swagger@npm:^11.0.0":
-  version: 11.3.0
-  resolution: "@nestjs/swagger@npm:11.3.0"
+  version: 11.3.1
+  resolution: "@nestjs/swagger@npm:11.3.1"
   dependencies:
     "@microsoft/tsdoc": "npm:0.16.0"
     "@nestjs/mapped-types": "npm:2.1.1"
@@ -2156,7 +2156,7 @@ __metadata:
       optional: true
     class-validator:
       optional: true
-  checksum: 10c0/e7032639971430a52da0ccbde88587c4e4014acd09dff806ff84b5f14c0ac76ed8cc733b783181c5d231de217e05afcea0f03e19d65e50eec03a0fcbc9b6a6ba
+  checksum: 10c0/7e16f6cf60452db7a1eabbe0798f7cba90e5cd8af85ca745adb2e7010191a6bc64f8b1f114be63e42e3f43a46ca9a67821458b3a370d0357ee93fce004dd3941
   languageName: node
   linkType: hard
 
