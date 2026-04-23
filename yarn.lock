@@ -1858,15 +1858,15 @@ __metadata:
   linkType: hard
 
 "@nestjs/cache-manager@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "@nestjs/cache-manager@npm:3.1.0"
+  version: 3.1.1
+  resolution: "@nestjs/cache-manager@npm:3.1.1"
   peerDependencies:
     "@nestjs/common": ^9.0.0 || ^10.0.0 || ^11.0.0
     "@nestjs/core": ^9.0.0 || ^10.0.0 || ^11.0.0
     cache-manager: ">=6"
     keyv: ">=5"
     rxjs: ^7.8.1
-  checksum: 10c0/b8ebcaeae53425e4093ae2ec6bd3199bcdb22c7558810dc4c616c87617de4bbb1aca944c34de1dc14d5afb0b7bbda7223a449b39e0319df2a9e4c2953407b12b
+  checksum: 10c0/afd4f6138535673dfcae99c5e77ff4309504f1095e8aedaa6a39d0e48948ac616859a5293063bd9fea82254dbe76663655eef7999b4d92f7678c5b230741880c
   languageName: node
   linkType: hard
 
